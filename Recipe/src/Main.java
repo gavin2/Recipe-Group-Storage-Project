@@ -14,8 +14,6 @@ public class Main {
      * Generate shopping lists
      *  - Recipe scaling
      * 
-     * 
-     * 
      * GUI - Last Please
      * 
      */
