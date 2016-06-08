@@ -10,7 +10,7 @@ public class Recipe {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // Jordan is a noob
+        
     }
     
 }
