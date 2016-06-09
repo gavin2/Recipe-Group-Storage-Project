@@ -1,4 +1,6 @@
 
+import java.util.Scanner;
+
 /**
  *
  * @author Gavin Christie
@@ -22,6 +24,15 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        Scanner k = new Scanner(System.in);
+        Actions a = new Actions();
+        getInput(k, a);
+    }
+    
+    public static void getInput(Scanner k, Actions a) {
+        
+        System.out.println("Add a");
+        String action = Character.toString(k.nextLine().charAt(0));
         
     }
     
