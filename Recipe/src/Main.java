@@ -12,6 +12,10 @@ public class Main {
      * DON'T FORGET TO PUT YOUR NAME ONE ANYTHING YOU CREATE
      * 
      * File IO - Adding recipes, reading recipes, editing recipes
+     *  Adding
+     *      - Ask the user for the amount first (decimal) follow by the ingredient itself (singular)
+     *      - After a special character has been entered, the user will enter the steps
+     *      - Each new line is a different step (just like in the text file)
      *
      * Searching for recipes
      *
