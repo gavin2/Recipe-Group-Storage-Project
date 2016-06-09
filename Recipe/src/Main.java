@@ -7,6 +7,10 @@ import java.util.Scanner;
 public class Main {
 
     /**
+     * Jordan To Do List: Editing recipes
+     * 
+     * DON'T FORGET TO PUT YOUR NAME ONE ANYTHING YOU CREATE
+     * 
      * File IO - Adding recipes, reading recipes, editing recipes
      *
      * Searching for recipes
