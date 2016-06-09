@@ -16,8 +16,10 @@ public class Actions {
      * Gavin
      */
     public void addRecipe(Scanner k) {
+        Recipe newR = new Recipe();
         System.out.print("Recipe name: ");
-        String name = k.nextLine();
+        newR.name = k.nextLine();
+        
         
     }
     

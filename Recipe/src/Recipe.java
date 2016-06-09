@@ -11,6 +11,7 @@ import java.util.ArrayList;
  * @author 085685858
  */
 public class Recipe {
+    String name;
     ArrayList ingredients;
     ArrayList steps;
 }
