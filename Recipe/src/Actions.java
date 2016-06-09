@@ -1,3 +1,6 @@
+
+import java.util.Scanner;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -5,14 +8,29 @@
  */
 /**
  *
- * @author 085685858
+ * @author Gavin Christie
  */
 public class Actions {
     
     /**
      * Gavin
      */
-    public void addRecipe() {
+    public void addRecipe(Scanner k) {
+        System.out.print("Recipe name: ");
+        
+    }
+    
+    /**
+     * Gavin
+     */
+    public void addIngredient() {
+        
+    }
+    
+    /**
+     * Gavin
+     */
+    public void addStep() {
         
     }
 }

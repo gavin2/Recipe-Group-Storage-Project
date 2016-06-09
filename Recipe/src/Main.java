@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Main {
 
     /**
-     * Jordan To Do List: Editing recipes
+     * Jordan'S To Do List: Editing recipes, Removing steps/ingredients
      * 
      * DON'T FORGET TO PUT YOUR NAME ONE ANYTHING YOU CREATE
      * 
@@ -43,7 +43,7 @@ public class Main {
 
             switch (action) {
                 case 'a':
-                    a.addRecipe();
+                    a.addRecipe(k);
                     break;
                 default:
                     System.out.println("Command not recognized. Please try again.");
