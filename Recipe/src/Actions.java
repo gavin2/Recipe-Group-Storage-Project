@@ -17,6 +17,7 @@ public class Actions {
      */
     public void addRecipe(Scanner k) {
         System.out.print("Recipe name: ");
+        String name = k.nextLine();
         
     }
     
