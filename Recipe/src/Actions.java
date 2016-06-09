@@ -9,4 +9,10 @@
  */
 public class Actions {
     
+    /**
+     * Gavin
+     */
+    public void addRecipe() {
+        
+    }
 }
