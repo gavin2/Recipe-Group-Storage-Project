@@ -57,22 +57,28 @@ public class Actions {
      */
     public void readRecipe(File recipeList) {
         Recipe newRec = new Recipe();
+
         try {
             // create a scanner for the file
             Scanner fileRead = new Scanner(recipeList);
+            int fileLength = fileLength(fileRead, recipeList);
             // for loop (to go through the entire file)
+            for (int i = 0; i < fileLength; i++) {
+                //every run of the for loop is a new recipe
 
-            // the first line is always the name
-            newRec.name = fileRead.nextLine();
-            while (!fileRead.equals(";;")) {
-                newRec.ingredients.add(fileRead.nextFloat());
-                newRec.ingredients.add(fileRead.nextLine());
-                // add the next Float
-                // add the next string
-            }
-            while (!fileRead.equals(";;")) {
-                // add every line to a next step 
-                newRec.steps.add(fileRead.nextLine());
+                // the first line is always the name
+                newRec.name = fileRead.nextLine();
+                while (!fileRead.equals(";;")) {
+                    newRec.amount.add(fileRead.nextFloat());
+                    newRec.ingredients.add(fileRead.nextLine());
+                    // add the next Float
+                    // add the next string
+                }
+                while (!fileRead.equals("\n")) {
+                    // add every line to a next step 
+                    newRec.steps.add(fileRead.nextLine());
+                }
+                // the end of the for loop indicated the file has no more recipes
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Actions.class.getName()).log(Level.SEVERE, null, ex);
@@ -80,5 +86,27 @@ public class Actions {
 
     }
 
+    /**
+     * Carter get the length of the file
+     *
+     * @param fileRead the scanner for the file
+     * @param file the file to be read from
+     * @return an integer, representing how many lines are in the file
+     */
+    public int fileLength(Scanner fileRead, File file) {
+        //get the length of the file (each string)
+        int theCount = 0;
+        try {
+            fileRead = new Scanner(file);
+            while (fileRead.hasNextLine()) {
+                fileRead.nextLine();
+                theCount++;
+            }
+            return theCount;
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Actions.class.getName()).log(Level.SEVERE, null, ex);
+            return -1;
+        }
+    }
+
 }
-// PUSH NEXT TIME 
