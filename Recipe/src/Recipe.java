@@ -12,6 +12,7 @@ import java.util.ArrayList;
  */
 public class Recipe {
     String name;
-    ArrayList ingredients;
-    ArrayList steps;
+    ArrayList<Float> amount = new ArrayList<Float>();
+    ArrayList<String> ingredients = new ArrayList<String>();
+    ArrayList<String> steps = new ArrayList<String>();
 }

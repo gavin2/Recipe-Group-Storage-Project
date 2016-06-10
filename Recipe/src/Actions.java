@@ -23,20 +23,29 @@ public class Actions {
         Recipe newR = new Recipe();
         System.out.print("Recipe name: ");
         newR.name = k.nextLine();
-    }
-
-    /**
-     * Gavin
-     */
-    public void addIngredient() {
+        addIngredients(newR, k);
 
     }
 
     /**
      * Gavin
      */
-    public void addStep() {
+    public void addIngredients(Recipe n, Scanner k) {
+        String ingredient;
+        float amount;
+        System.out.println("Enter % to end ingredients list.");
+        do {
+            System.out.print("Enter ingredient name: ");
+            ingredient = k.nextLine();
+            if (ingredient.equals("%")) {
+                return;
+            }
+            System.out.print("Enter amount: ");
+            amount = Float.parseFloat(k.nextLine());
+            n.ingredients.add(ingredient);
+            n.amount.add(amount);
 
+        } while (ingredient != "%");
     }
 
     /**
