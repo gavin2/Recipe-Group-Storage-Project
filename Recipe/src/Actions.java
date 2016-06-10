@@ -1,6 +1,9 @@
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,6 +18,8 @@ import java.util.logging.Logger;
  * @author Gavin Christie
  */
 public class Actions {
+    
+    PrintWriter pw = null;
 
     /**
      * Gavin
@@ -37,12 +42,12 @@ public class Actions {
         System.out.println("Enter % as a new ingredient to end list.");
         do {
             System.out.print("Enter ingredient name: ");
-            ingredient = k.nextLine();
+            ingredient = k.nextLine().trim();
             if (ingredient.equals("%")) {
                 return;
             }
             System.out.print("Enter amount: ");
-            amount = Float.parseFloat(k.nextLine());
+            amount = Float.parseFloat(k.nextLine().trim());
             n.ingredients.add(ingredient);
             n.amount.add(amount);
 
@@ -60,7 +65,7 @@ public class Actions {
         System.out.println("Enter % as a new step to end list.");
         do {
             System.out.print("Enter step to be add: ");
-            step = k.nextLine();
+            step = k.nextLine().trim();
             if (step.equals("%")) {
                 return;
             }
@@ -71,7 +76,26 @@ public class Actions {
     /**
      * Gavin
      */
-    public void writeRecipe() {
+    public void writeRecipe(Recipe n, File recipeList) {
+        try {
+            pw = new PrintWriter(new FileWriter(recipeList, false));
+        } catch (IOException ex) {
+            Logger.getLogger(Actions.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        pw.println(n.name);
+        
+        int sizeI = n.amount.size();
+        for (int i = 0; i < sizeI; i++) {
+            pw.println(n.amount.get(i) + " " + n.ingredients.get(i));
+        }
+        System.out.println(";;");
+        
+        int sizeS = n.steps.size();
+        for (int i = 0; i < sizeS; i++) {
+            pw.println(n.steps.get(i));
+        }
+        System.out.println("--");
         
     }
 
