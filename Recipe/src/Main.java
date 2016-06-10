@@ -51,7 +51,7 @@ public class Main {
 
             switch (action) {
                 case 'a':
-                    a.addRecipe(k);
+                    a.addRecipe(k, recipeList);
                     break;
                 case 'b':
                     a.readRecipe(recipeList);
