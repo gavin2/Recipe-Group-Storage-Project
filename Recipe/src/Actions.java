@@ -52,16 +52,18 @@ public class Actions {
             // create a scanner for the file
             Scanner fileRead = new Scanner(recipeList);
             // for loop (to go through the entire file)
-            
+
             // the first line is always the name
             newRec.name = fileRead.nextLine();
             while (!fileRead.equals(";;")) {
-
+                newRec.ingredients.add(fileRead.nextFloat());
+                newRec.ingredients.add(fileRead.nextLine());
                 // add the next Float
                 // add the next string
             }
             while (!fileRead.equals(";;")) {
                 // add every line to a next step 
+                newRec.steps.add(fileRead.nextLine());
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Actions.class.getName()).log(Level.SEVERE, null, ex);
@@ -70,3 +72,4 @@ public class Actions {
     }
 
 }
+// PUSH NEXT TIME 
