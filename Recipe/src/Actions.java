@@ -63,7 +63,7 @@ public class Actions {
             int fileLength = fileLength(fileRead, recipeList);
 
             // for loop (to go through the entire file)
-            for (int i = 0; i <= fileLength; i++) {
+            for (int i = 0; i < fileLength; i++) {
                 //every run of the for loop is a new recipe
 
                 // the first line is always the name
@@ -107,9 +107,9 @@ public class Actions {
         //get the length of the file (each string)
         int theCount = 0;
         try {
-            fileRead = new Scanner(file);
-            while (fileRead.hasNextLine()) {
-                fileRead.nextLine();
+            fileRead = new Scanner(file).useDelimiter("--");
+            while (fileRead.hasNext()) {
+                fileRead.next();
                 theCount++;
             }
             return theCount;
