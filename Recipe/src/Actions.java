@@ -93,15 +93,15 @@ public class Actions {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Actions.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     /**
-     * Carter get the length of the file
+     * Carter
      *
      * @param fileRead the scanner for the file
      * @param file the file to be read from
-     * @return an integer, representing how many lines are in the file
+     * @return an integer, representing how many recipes are in the file
+     * (recipes are sparated by two hyphens "--")
      */
     public int fileLength(Scanner fileRead, File file) {
         //get the length of the file (each string)
