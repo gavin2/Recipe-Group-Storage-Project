@@ -155,7 +155,7 @@ public class Actions {
      * @param fileRead the scanner for the file
      * @param file the file to be read from
      * @return an integer, representing how many recipes are in the file
-     * (recipes are sparated by two hyphens "--")
+     * (recipes are separated by two hyphens "--")
      */
     public int fileLength(Scanner fileRead, File file) {
         //get the length of the file (each string)
