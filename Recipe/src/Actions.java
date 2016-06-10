@@ -19,11 +19,12 @@ public class Actions {
     /**
      * Gavin
      */
-    public void addRecipe(Scanner k) {
+    public void addRecipe(Scanner k, File recipeList) {
         Recipe newR = new Recipe();
         System.out.print("Recipe name: ");
         newR.name = k.nextLine();
         addIngredients(newR, k);
+        addSteps(newR, k);
 
     }
 
@@ -33,7 +34,7 @@ public class Actions {
     public void addIngredients(Recipe n, Scanner k) {
         String ingredient;
         float amount;
-        System.out.println("Enter % to end ingredients list.");
+        System.out.println("Enter % as a new ingredient to end list.");
         do {
             System.out.print("Enter ingredient name: ");
             ingredient = k.nextLine();
@@ -45,7 +46,33 @@ public class Actions {
             n.ingredients.add(ingredient);
             n.amount.add(amount);
 
-        } while (ingredient != "%");
+        } while (!ingredient.equals("%"));
+    }
+    
+    /**
+     * Gavin
+     * 
+     * @param n
+     * @param k 
+     */
+    public void addSteps(Recipe n, Scanner k) {
+        String step;
+        System.out.println("Enter % as a new step to end list.");
+        do {
+            System.out.print("Enter step to be add: ");
+            step = k.nextLine();
+            if (step.equals("%")) {
+                return;
+            }
+            n.steps.add(step);
+        } while(!step.equals("%"));
+    }
+    
+    /**
+     * Gavin
+     */
+    public void writeRecipe() {
+        
     }
 
     /**
