@@ -30,6 +30,7 @@ public class Actions {
         newR.name = k.nextLine();
         addIngredients(newR, k);
         addSteps(newR, k);
+        writeRecipe(newR, recipeList);
 
     }
 
@@ -78,24 +79,26 @@ public class Actions {
      */
     public void writeRecipe(Recipe n, File recipeList) {
         try {
-            pw = new PrintWriter(new FileWriter(recipeList, false));
+            pw = new PrintWriter(new FileWriter(recipeList, true));
         } catch (IOException ex) {
             Logger.getLogger(Actions.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        pw.println(n.name);
+        pw.println("\n" + n.name);
         
         int sizeI = n.amount.size();
         for (int i = 0; i < sizeI; i++) {
             pw.println(n.amount.get(i) + " " + n.ingredients.get(i));
         }
-        System.out.println(";;");
+        pw.println(";;");
         
         int sizeS = n.steps.size();
         for (int i = 0; i < sizeS; i++) {
             pw.println(n.steps.get(i));
         }
-        System.out.println("--");
+        pw.println("--");
+        
+        pw.close();
         
     }
 
