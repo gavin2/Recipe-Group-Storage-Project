@@ -172,6 +172,10 @@ public class Actions {
             return -1;
         }
     }
+    
+    public void editRecipe(Scanner k, File recipeList){
+        
+    }
 
     /**
      * Jordan
@@ -210,7 +214,17 @@ public class Actions {
         String ingredient;
         System.out.println("Which ingredient would you like to edit? Please enter the index of it. Enter 0 to finish editing.");
         int in = k.nextInt();
-
+        do{
+            if(in > n.ingredients.size()){
+                addIngredients(n,k);
+            }
+            else if(in < n.ingredients.size()){
+                System.out.println("This is the original ingredient/n" + n.ingredients.get(in));
+                String newIngredient = k.nextLine();
+                n.ingredients.add(in, newIngredient);
+            }
+        }while(in != 0);
     }
+    
 
 }
