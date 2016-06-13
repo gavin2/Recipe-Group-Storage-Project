@@ -187,8 +187,24 @@ public class Actions {
         }
     }
     
+    /**
+     * Jordan
+     * 
+     * @param k
+     * @param recipeList 
+     */
     public void editRecipe(Scanner k, File recipeList){
-        
+        System.out.println("What recipe would you like to edit?");
+        String n = k.nextLine();
+        System.out.println("What would you like to do?\n a- edit steps\n b- edit ingredients\n c-remove steps\n d- remove ingredients");
+        String choice = k.nextLine();
+        choice.toLowerCase();
+        if(choice.equals("a")){
+            //editRecipeSteps(recipeList, n, k);
+        }
+        else if(choice.equals("b")){
+            //editRecipeIngredients(recipeList, n, k);
+        }
     }
 
     /**
