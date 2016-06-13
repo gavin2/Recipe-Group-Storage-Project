@@ -172,5 +172,13 @@ public class Actions {
             return -1;
         }
     }
+    
+    public void editRecipeSteps(File recipeList, Recipe n, Scanner k){
+        readRecipe(recipeList);
+    }
+    
+    public void editRecipeIngredients(File recipeList, Recipe n, Scanner k){
+        
+    }
 
 }
