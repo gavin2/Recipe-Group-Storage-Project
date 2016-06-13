@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  * @author Gavin Christie
  */
 public class Actions {
-    
+
     PrintWriter pw = null;
 
     /**
@@ -54,12 +54,12 @@ public class Actions {
 
         } while (!ingredient.equals("%"));
     }
-    
+
     /**
      * Gavin
-     * 
+     *
      * @param n
-     * @param k 
+     * @param k
      */
     public void addSteps(Recipe n, Scanner k) {
         String step;
@@ -71,9 +71,9 @@ public class Actions {
                 return;
             }
             n.steps.add(step);
-        } while(!step.equals("%"));
+        } while (!step.equals("%"));
     }
-    
+
     /**
      * Gavin
      */
@@ -83,23 +83,23 @@ public class Actions {
         } catch (IOException ex) {
             Logger.getLogger(Actions.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         pw.println("\n" + n.name);
-        
+
         int sizeI = n.amount.size();
         for (int i = 0; i < sizeI; i++) {
             pw.println(n.amount.get(i) + " " + n.ingredients.get(i));
         }
         pw.println(";;");
-        
+
         int sizeS = n.steps.size();
         for (int i = 0; i < sizeS; i++) {
             pw.println(n.steps.get(i));
         }
         pw.println("--");
-        
+
         pw.close();
-        
+
     }
 
     /**
@@ -172,13 +172,45 @@ public class Actions {
             return -1;
         }
     }
-    
-    public void editRecipeSteps(File recipeList, Recipe n, Scanner k){
+
+    /**
+     * Jordan
+     * 
+     * @param recipeList
+     * @param n
+     * @param k 
+     */
+    public void editRecipeSteps(File recipeList, Recipe n, Scanner k) {
         readRecipe(recipeList);
+        String step;
+        System.out.println("Which step would you like to edit? Enter 0 to finish editing.");
+        int in = k.nextInt();
+        do {
+            if (in > n.steps.size()) {
+                addSteps(n, k);
+            } else if (in < n.steps.size()) {
+                System.out.println("This is the orginal step/n" + n.steps.get(in));
+                String newStep = k.nextLine();
+                n.steps.add(in, newStep);
+            }
+            System.out.println("If you would like to edit another step, which one? Enter 0 to finish editing.");
+        } while (in != 0);
+
     }
-    
-    public void editRecipeIngredients(File recipeList, Recipe n, Scanner k){
-        
+
+    /**
+     * Jordan
+     * 
+     * @param recipeList
+     * @param n
+     * @param k 
+     */
+    public void editRecipeIngredients(File recipeList, Recipe n, Scanner k) {
+        readRecipe(recipeList);
+        String ingredient;
+        System.out.println("Which ingredient would you like to edit? Please enter the index of it. Enter 0 to finish editing.");
+        int in = k.nextInt();
+
     }
 
 }
