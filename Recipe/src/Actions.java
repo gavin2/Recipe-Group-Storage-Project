@@ -22,20 +22,26 @@ public class Actions {
     PrintWriter pw = null;
 
     /**
-     * Gavin
+     * Gavin - Method used to add a new recipe.
+     * 
+     * @param k Scanner used to get input
+     * @param recipeList The file storing the recipes
      */
     public void addRecipe(Scanner k, File recipeList) {
-        Recipe newR = new Recipe();
+        Recipe newR = new Recipe(); // Creating new recipe
         System.out.print("Recipe name: ");
-        newR.name = k.nextLine();
-        addIngredients(newR, k);
-        addSteps(newR, k);
-        writeRecipe(newR, recipeList);
+        newR.name = k.nextLine(); // Getting the recipe name
+        addIngredients(newR, k); // Adding ingredients
+        addSteps(newR, k); // Adding the steps to the recipe
+        writeRecipe(newR, recipeList); // Writing the recipe to the file
 
     }
 
     /**
-     * Gavin
+     * Gavin - Method used to add an ingredient to the recipe.
+     * 
+     * @param n The recipe that the ingredient is being added to
+     * @param k The scanner used to get the input
      */
     public void addIngredients(Recipe n, Scanner k) {
         String ingredient;
@@ -43,63 +49,71 @@ public class Actions {
         System.out.println("Enter % as a new ingredient to end list.");
         do {
             System.out.print("Enter ingredient name: ");
-            ingredient = k.nextLine().trim();
+            ingredient = k.nextLine().trim(); // Getting the name of the recipe
             if (ingredient.equals("%")) {
-                return;
+                return; // When no more ingredients to be entered return
             }
-            System.out.print("Enter amount: ");
-            amount = Float.parseFloat(k.nextLine().trim());
-            n.ingredients.add(ingredient);
-            n.amount.add(amount);
+            System.out.print("Enter amount (numeric only): ");
+            amount = Float.parseFloat(k.nextLine().trim()); // Add the amount of the ingredient
+            n.ingredients.add(ingredient); // Add the ingredient to the array list
+            n.amount.add(amount); // Add the amount to the array list
 
         } while (!ingredient.equals("%"));
     }
 
     /**
-     * Gavin
-     *
-     * @param n
-     * @param k
+     * Gavin - Method to add set to the recipe.
+     * 
+     * @param n The recipe being added to
+     * @param k Scanner used to enter information
      */
     public void addSteps(Recipe n, Scanner k) {
         String step;
         System.out.println("Enter % as a new step to end list.");
         do {
             System.out.print("Enter step to be add: ");
-            step = k.nextLine().trim();
+            step = k.nextLine().trim(); // Getting the step to be entered
             if (step.equals("%")) {
-                return;
+                return; // When no more steps return
             }
             n.steps.add(step);
         } while (!step.equals("%"));
     }
 
     /**
-     * Gavin
+     * Gavin - Method used to write the whole recipe to the file.
+     * 
+     * @param n The recipe being used
+     * @param recipeList The file holding all the recipes
      */
     public void writeRecipe(Recipe n, File recipeList) {
-        try {
+        try { // Try - catch to create the print writer
             pw = new PrintWriter(new FileWriter(recipeList, true));
         } catch (IOException ex) {
+            System.out.print("Problem creating the print writer.");
             Logger.getLogger(Actions.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         pw.println("\n" + n.name);
 
+        
+        pw.println("\n" + n.name); // Printing the name tp the file
+       
         int sizeI = n.amount.size();
-        for (int i = 0; i < sizeI; i++) {
-            pw.println(n.amount.get(i) + " " + n.ingredients.get(i));
+        for (int i = 0; i < sizeI; i++) { // For loop going through each ingredient
+            pw.println(n.amount.get(i) + " " + n.ingredients.get(i)); // Writing ingredient and amount to file
         }
-        pw.println(";;");
 
-        int sizeS = n.steps.size();
+        pw.println(";;"); // Writing the delimiter to the file
+        
+        int sizeS = n.steps.size(); // The number of steps in the recipe
+
         for (int i = 0; i < sizeS; i++) {
-            pw.println(n.steps.get(i));
+            pw.println(n.steps.get(i)); // Printing the step to the file
         }
         pw.println("--");
 
         pw.close();
-
     }
 
     /**
