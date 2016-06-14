@@ -228,7 +228,7 @@ public class Actions {
      * @param k
      * @param recipeList
      */
-    public void editRecipe(ArrayList<Recipe> l, Scanner k, File recipeList) {
+    public void editRecipe(ArrayList<Recipe> l, Scanner k) {
         System.out.println("What recipe would you like to edit?");
         String n = k.nextLine();
         Recipe h = searchRec(l, n);
@@ -236,9 +236,9 @@ public class Actions {
         String choice = k.nextLine();
         choice.toLowerCase();
         if (choice.equals("a")) {
-            editRecipeSteps(recipeList, h, k);
+            editRecipeSteps(h, k);
         } else if (choice.equals("b")) {
-            editRecipeIngredients(recipeList, h, k);
+            editRecipeIngredients(h, k);
         }
     }
 
@@ -249,8 +249,7 @@ public class Actions {
      * @param n
      * @param k
      */
-    public void editRecipeSteps(File recipeList, Recipe n, Scanner k) {
-        readRecipe(recipeList);
+    public void editRecipeSteps(Recipe n, Scanner k) {
         String step;
         System.out.println("Which step would you like to edit? Enter 0 to finish editing.");
         int in = k.nextInt();
@@ -274,8 +273,7 @@ public class Actions {
      * @param n
      * @param k
      */
-    public void editRecipeIngredients(File recipeList, Recipe n, Scanner k) {
-        readRecipe(recipeList);
+    public void editRecipeIngredients(Recipe n, Scanner k) {
         String ingredient;
         System.out.println("Which ingredient would you like to edit? Please enter the index of it. Enter 0 to finish editing.");
         int in = k.nextInt();
@@ -289,9 +287,13 @@ public class Actions {
             }
         } while (in != 0);
     }
+    
+    //public void groceryList(ArrayList<Recipe> n,){
+        
+    //}
 
     /**
-     * Gavin -
+     * Gavin - is a dick
      *
      * @param n
      * @param name

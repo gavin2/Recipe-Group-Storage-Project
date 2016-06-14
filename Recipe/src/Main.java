@@ -69,7 +69,7 @@ public class Main {
                     a.readRecipe(recipeList);
                     break;
                 case 'c':
-                    a.editRecipe(allRecipes, k, recipeList);
+                    a.editRecipe(allRecipes, k);
                     break;
                 case 's':
                     System.out.print("Name of recipe: ");
