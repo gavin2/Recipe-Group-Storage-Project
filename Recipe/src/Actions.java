@@ -29,7 +29,7 @@ public class Actions {
         newR.name = k.nextLine(); // Getting the recipe name
         addIngredients(newR, k); // Adding ingredients
         addSteps(newR, k); // Adding the steps to the recipe
-        
+
         return newR;
     }
 
@@ -80,13 +80,13 @@ public class Actions {
     public Step createStep(Scanner k) {
         System.out.print("Enter step to be add: ");
         String temp = k.nextLine().trim();
-        
+
         if (temp.equals("%")) {
             return null; // When no more steps return
         }
-        
+
         Step s = new Step(temp); // Getting the step to be entered
-        
+
         return s;
     }
 
@@ -101,11 +101,11 @@ public class Actions {
         System.out.println("Enter % as a new step to end list.");
         do {
             step = createStep(k);
-            
+
             if (step == null) {
                 return;
             }
-            
+
             n.steps.add(step);
         } while (true);
     }
@@ -150,8 +150,11 @@ public class Actions {
      *
      * @param recipeList The file to be passed on to this method for reading
      */
-    public void readRecipe(File recipeList) {
+    public ArrayList<Recipe> readRecipe(File recipeList) {
+
+        ArrayList<Recipe> allRecipes = new ArrayList<Recipe>();
         Recipe newRec = new Recipe();
+
         try {
             // create a scanner for the file
             Scanner fileRead = new Scanner(recipeList);
@@ -170,16 +173,12 @@ public class Actions {
                     } else {
                         newRec.ingredients.add(new Ingredient(fileRead.next().trim(),
                                 fileRead.nextLine().trim(), Float.parseFloat(temp)));
-
                         /**
-                         * Change above needs to be tested
-                         * Check to see if new createIngredient and createStep can
-                         * be use when reading from the file.
+                         * Change above needs to be tested Check to see if new
+                         * createIngredient and createStep can be use when
+                         * reading from the file.
                          */
-                        
                     }
-                    // add the next Float
-                    // add the next string
                 }
                 temp = fileRead.nextLine().trim();
                 while (!temp.equals("--")) {
@@ -190,11 +189,13 @@ public class Actions {
                         newRec.steps.add(new Step(temp));
                     }
                 }
+                allRecipes.add(newRec);
                 // the end of the for loop indicated the file has no more recipes
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Actions.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return allRecipes;
     }
 
     /**
@@ -287,13 +288,13 @@ public class Actions {
             }
         } while (in != 0);
     }
-    
+
     /**
-     * Gavin - 
-     * 
+     * Gavin -
+     *
      * @param n
      * @param name
-     * @return 
+     * @return
      */
     public Recipe searchRec(ArrayList<Recipe> n, String name) {
         int low = 0, high = n.size(), mid = 0; // Creating required variables
