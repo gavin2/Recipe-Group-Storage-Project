@@ -1,3 +1,4 @@
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -17,7 +18,7 @@ public class Actions {
 
     /**
      * Gavin - Method used to add a new recipe.
-     * 
+     *
      * @param k Scanner used to get input
      * @param recipeList The file storing the recipes
      */
@@ -33,32 +34,44 @@ public class Actions {
 
     /**
      * Gavin - Method used to add an ingredient to the recipe.
-     * 
+     *
      * @param n The recipe that the ingredient is being added to
      * @param k The scanner used to get the input
      */
     public void addIngredients(Recipe n, Scanner k) {
-        String ingredient, unit;
-        float amount;
         System.out.println("Enter % as a new ingredient to end list.");
         do {
-            System.out.print("Enter ingredient name: ");
-            ingredient = k.nextLine().trim(); // Getting the name of the recipe
-            if (ingredient.equals("%")) {
-                return; // When no more ingredients to be entered return
+            Ingredient l = createIngredient(k);
+            if (l == null) {
+                return;
             }
-            System.out.print("Enter amount (numeric only): ");
-            amount = Float.parseFloat(k.nextLine().trim()); // Add the amount of the ingredient
-            System.out.print("Enter unit of measurement: ");
-            unit = k.nextLine();
-            n.ingredients.add(new Ingredient(unit, ingredient, amount)); // Add the ingredient to the array list
+            n.ingredients.add(l);
+            
+        } while (true);
+    }
 
-        } while (!ingredient.equals("%"));
+    /**
+     * Gavin - 
+     * @param k
+     * @return 
+     */
+    public Ingredient createIngredient(Scanner k) {
+        System.out.print("Enter ingredient name: ");
+        String n = k.nextLine().trim();
+        if (n.equals("%")) {
+            return null;
+        }
+        System.out.print("Enter unit of measurement: ");
+        String u = k.nextLine().trim();
+        System.out.print("Amount: ");
+        float a = k.nextFloat();
+
+        return new Ingredient(u, n, a);
     }
 
     /**
      * Gavin - Method to add set to the recipe.
-     * 
+     *
      * @param n The recipe being added to
      * @param k Scanner used to enter information
      */
@@ -77,7 +90,7 @@ public class Actions {
 
     /**
      * Gavin - Method used to write the whole recipe to the file.
-     * 
+     *
      * @param n The recipe being used
      * @param recipeList The file holding all the recipes
      */
@@ -91,16 +104,15 @@ public class Actions {
 
         pw.println("\n" + n.name);
 
-        
         pw.println("\n" + n.name); // Printing the name tp the file
-       
+
         int sizeI = n.ingredients.size();
         for (int i = 0; i < sizeI; i++) { // For loop going through each ingredient
             pw.println(n.ingredients.get(i).toString()); // Writing ingredient and amount to file
         }
 
         pw.println(";;"); // Writing the delimiter to the file
-        
+
         int sizeS = n.steps.size(); // The number of steps in the recipe
 
         for (int i = 0; i < sizeS; i++) {
@@ -136,8 +148,9 @@ public class Actions {
                     temp = fileRead.next().trim();
                     if (temp.equals(";;")) {
                     } else {
-                        newRec.amount.add(Float.parseFloat(temp));
-                        newRec.ingredients.add(fileRead.nextLine().trim());
+                        newRec.ingredients.add(new Ingredient(fileRead.next().trim(),
+                                fileRead.nextLine().trim(), Float.parseFloat(temp)));
+
                     }
                     // add the next Float
                     // add the next string
@@ -148,7 +161,7 @@ public class Actions {
                     // add every line to a next step 
                     if (temp.equals("--")) {
                     } else {
-                        newRec.steps.add(temp);
+                        newRec.steps.add(new Step(temp));
                     }
                 }
                 // the end of the for loop indicated the file has no more recipes
@@ -181,33 +194,32 @@ public class Actions {
             return -1;
         }
     }
-    
+
     /**
      * Jordan
-     * 
+     *
      * @param k
-     * @param recipeList 
+     * @param recipeList
      */
-    public void editRecipe(Scanner k, File recipeList){
+    public void editRecipe(Scanner k, File recipeList) {
         System.out.println("What recipe would you like to edit?");
         String n = k.nextLine();
         System.out.println("What would you like to do?\n a- edit steps\n b- edit ingredients\n c-remove steps\n d- remove ingredients");
         String choice = k.nextLine();
         choice.toLowerCase();
-        if(choice.equals("a")){
+        if (choice.equals("a")) {
             //editRecipeSteps(recipeList, n, k);
-        }
-        else if(choice.equals("b")){
+        } else if (choice.equals("b")) {
             //editRecipeIngredients(recipeList, n, k);
         }
     }
 
     /**
      * Jordan
-     * 
+     *
      * @param recipeList
      * @param n
-     * @param k 
+     * @param k
      */
     public void editRecipeSteps(File recipeList, Recipe n, Scanner k) {
         readRecipe(recipeList);
@@ -220,7 +232,7 @@ public class Actions {
             } else if (in < n.steps.size()) {
                 System.out.println("This is the orginal step/n" + n.steps.get(in));
                 String newStep = k.nextLine();
-                n.steps.add(in, newStep);
+                n.steps.add(in, new Step(newStep));
             }
             System.out.println("If you would like to edit another step, which one? Enter 0 to finish editing.");
         } while (in != 0);
@@ -229,27 +241,25 @@ public class Actions {
 
     /**
      * Jordan
-     * 
+     *
      * @param recipeList
      * @param n
-     * @param k 
+     * @param k
      */
     public void editRecipeIngredients(File recipeList, Recipe n, Scanner k) {
         readRecipe(recipeList);
         String ingredient;
         System.out.println("Which ingredient would you like to edit? Please enter the index of it. Enter 0 to finish editing.");
         int in = k.nextInt();
-        do{
-            if(in > n.ingredients.size()){
-                addIngredients(n,k);
-            }
-            else if(in < n.ingredients.size()){
+        do {
+            if (in > n.ingredients.size()) {
+                addIngredients(n, k);
+            } else if (in < n.ingredients.size()) {
                 System.out.println("This is the original ingredient/n" + n.ingredients.get(in));
-                String newIngredient = k.nextLine();
-                n.ingredients.add(in, newIngredient);
+                Ingredient l = createIngredient(k);
+                n.ingredients.add(in, l);
             }
-        }while(in != 0);
+        } while (in != 0);
     }
-    
 
 }
