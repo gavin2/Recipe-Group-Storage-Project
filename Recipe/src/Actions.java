@@ -65,7 +65,7 @@ public class Actions {
         System.out.print("Enter unit of measurement: ");
         String u = k.nextLine().trim();
         System.out.print("Amount: ");
-        float a = k.nextFloat();
+        float a = Float.parseFloat(k.nextLine());
 
         return new Ingredient(u, n, a);
     }
@@ -137,7 +137,7 @@ public class Actions {
         size = n.steps.size(); // The number of steps in the recipe
 
         for (int i = 0; i < size; i++) {
-            pw.println(n.steps.get(i)); // Printing the step to the file
+            pw.println(n.steps.get(i).getStep()); // Printing the step to the file
         }
         pw.println("--");
 

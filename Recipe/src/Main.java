@@ -44,7 +44,7 @@ public class Main {
     public static void getInput(Scanner k, Actions a) {
         File recipeList = new File("RecipeList.txt");
 
-        System.out.println("Add a");
+        System.out.println("Add a\nRead in recipes b\nEdit recipe c");
         char action = k.nextLine().charAt(0);
 
         while (action != '-') {
@@ -64,7 +64,7 @@ public class Main {
                     action = k.nextLine().charAt(0);
             }
 
-            System.out.println("Add a");
+            System.out.println("Add a\nRead in recipes b\nEdit recipe c");
             action = k.nextLine().charAt(0);
         }
 
