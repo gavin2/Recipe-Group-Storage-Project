@@ -13,8 +13,6 @@ public class Main {
     /**
      * Jordan'S To Do List: Editing recipes, Removing steps/ingredients
      *
-     * Carter: ArrayList of recipes from the file --> Need for your method,
-     * readRecipe, to return the ArrayList to the getInput method
      *
      * Gavin: - When a new recipe is created, add it in alphabetical order to
      * the ArrayList - Create method to uses writeRecipe to write the whole
@@ -66,7 +64,7 @@ public class Main {
                     Collections.sort(allRecipes);
                     break;
                 case 'b':
-                    a.readRecipe(recipeList);
+                    a.readRecipe(recipeList); //testing purposes only
                     break;
                 case 'c':
                     a.editRecipe(k, recipeList);

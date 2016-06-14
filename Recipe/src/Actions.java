@@ -201,10 +201,11 @@ public class Actions {
     /**
      * Carter
      *
-     * @param fileRead the scanner for the file
+     * @param fileRead the scanner for the file (so we don't have like, a
+     * billion scanners)
      * @param file the file to be read from
      * @return an integer, representing how many recipes are in the file
-     * (recipes are separated by two hyphens "--")
+     * (recipes are separated by two hyphens "--") "-1" means there is an error.
      */
     public int fileLength(Scanner fileRead, File file) {
         //get the length of the file (each string)
