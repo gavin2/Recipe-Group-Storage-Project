@@ -1,5 +1,7 @@
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 /**
@@ -10,7 +12,15 @@ public class Main {
 
     /**
      * Jordan'S To Do List: Editing recipes, Removing steps/ingredients
-     *
+     * 
+     * Carter: ArrayList of recipes from the file
+     *          --> Need for your method, readRecipe, to return the ArrayList to the getInput method
+     * 
+     * Gavin: - When a new recipe is created, add it in alphabetical order to the ArrayList
+     *        - Create method to uses writeRecipe to write the whole ArrayList to the file when the program is closed
+     *        - Searching: for recipe and ingredient
+     *        - Sort ArrayList of Recipes
+     * 
      * DON'T FORGET TO PUT YOUR NAME ON ANYTHING YOU CREATE
      *
      * File IO - Adding recipes, reading recipes, editing recipes Adding - Ask
@@ -43,6 +53,7 @@ public class Main {
      */
     public static void getInput(Scanner k, Actions a) {
         File recipeList = new File("RecipeList.txt");
+        ArrayList<Recipe> allRecipes = new ArrayList<Recipe>(); // ArrayList to store all of the recipes, from file, 
 
         System.out.println("Add a\nRead in recipes b\nEdit recipe c");
         char action = k.nextLine().charAt(0);
@@ -51,7 +62,8 @@ public class Main {
 
             switch (action) {
                 case 'a':
-                    a.addRecipe(k, recipeList);
+                    allRecipes.add(a.addRecipe(k, recipeList));
+                    Collections.sort(allRecipes);
                     break;
                 case 'b':
                     a.readRecipe(recipeList);
@@ -60,8 +72,7 @@ public class Main {
                     a.editRecipe(k, recipeList);
                     break;
                 default:
-                    System.out.println("Command not recognized. Please try again.");
-                    action = k.nextLine().charAt(0);
+                    break;
             }
 
             System.out.println("Add a\nRead in recipes b\nEdit recipe c");

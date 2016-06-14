@@ -22,14 +22,14 @@ public class Actions {
      * @param k Scanner used to get input
      * @param recipeList The file storing the recipes
      */
-    public void addRecipe(Scanner k, File recipeList) {
+    public Recipe addRecipe(Scanner k, File recipeList) {
         Recipe newR = new Recipe(); // Creating new recipe
         System.out.print("Recipe name: ");
         newR.name = k.nextLine(); // Getting the recipe name
         addIngredients(newR, k); // Adding ingredients
         addSteps(newR, k); // Adding the steps to the recipe
-        writeRecipe(newR, recipeList); // Writing the recipe to the file
-
+        
+        return newR;
     }
 
     /**
@@ -122,8 +122,6 @@ public class Actions {
             System.out.print("Problem creating the print writer.");
             Logger.getLogger(Actions.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        pw.println("\n" + n.name);
 
         pw.println("\n" + n.name); // Printing the name tp the file
 
