@@ -46,13 +46,13 @@ public class Actions {
                 return;
             }
             n.ingredients.add(l);
-            
+
         } while (true);
     }
 
     /**
      * Gavin - Method to create an individual ingredient.
-     * 
+     *
      * @param k Scanner to get input
      * @return Returns an ingredient
      */
@@ -69,9 +69,23 @@ public class Actions {
 
         return new Ingredient(u, n, a);
     }
-    
+
+    /**
+     * Gavin - Method used to add an individual step.
+     *
+     * @param k The scanner used
+     * @return Returns a new step that can be added to a recipe
+     */
     public Step createStep(Scanner k) {
-        Step s = new Step("hello");
+        System.out.print("Enter step to be add: ");
+        String temp = k.nextLine().trim();
+        
+        if (temp.equals("%")) {
+            return null; // When no more steps return
+        }
+        
+        Step s = new Step(temp); // Getting the step to be entered
+        
         return s;
     }
 
@@ -82,16 +96,17 @@ public class Actions {
      * @param k Scanner used to enter information
      */
     public void addSteps(Recipe n, Scanner k) {
-        String step;
+        Step step;
         System.out.println("Enter % as a new step to end list.");
         do {
-            System.out.print("Enter step to be add: ");
-            step = k.nextLine().trim(); // Getting the step to be entered
-            if (step.equals("%")) {
-                return; // When no more steps return
+            step = createStep(k);
+            
+            if (step == null) {
+                return;
             }
-            n.steps.add(new Step(step));
-        } while (!step.equals("%"));
+            
+            n.steps.add(step);
+        } while (true);
     }
 
     /**
@@ -112,16 +127,16 @@ public class Actions {
 
         pw.println("\n" + n.name); // Printing the name tp the file
 
-        int sizeI = n.ingredients.size();
-        for (int i = 0; i < sizeI; i++) { // For loop going through each ingredient
+        int size = n.ingredients.size();
+        for (int i = 0; i < size; i++) { // For loop going through each ingredient
             pw.println(n.ingredients.get(i).toString()); // Writing ingredient and amount to file
         }
 
         pw.println(";;"); // Writing the delimiter to the file
 
-        int sizeS = n.steps.size(); // The number of steps in the recipe
+        size = n.steps.size(); // The number of steps in the recipe
 
-        for (int i = 0; i < sizeS; i++) {
+        for (int i = 0; i < size; i++) {
             pw.println(n.steps.get(i)); // Printing the step to the file
         }
         pw.println("--");
@@ -157,6 +172,12 @@ public class Actions {
                         newRec.ingredients.add(new Ingredient(fileRead.next().trim(),
                                 fileRead.nextLine().trim(), Float.parseFloat(temp)));
 
+                        /**
+                         * Change above needs to be tested
+                         * Check to see if new createIngredient and createStep can
+                         * be use when reading from the file.
+                         */
+                        
                     }
                     // add the next Float
                     // add the next string
