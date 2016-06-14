@@ -1,4 +1,3 @@
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -8,11 +7,6 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
  *
  * @author Gavin Christie
@@ -44,7 +38,7 @@ public class Actions {
      * @param k The scanner used to get the input
      */
     public void addIngredients(Recipe n, Scanner k) {
-        String ingredient;
+        String ingredient, unit;
         float amount;
         System.out.println("Enter % as a new ingredient to end list.");
         do {
@@ -55,8 +49,9 @@ public class Actions {
             }
             System.out.print("Enter amount (numeric only): ");
             amount = Float.parseFloat(k.nextLine().trim()); // Add the amount of the ingredient
-            n.ingredients.add(ingredient); // Add the ingredient to the array list
-            n.amount.add(amount); // Add the amount to the array list
+            System.out.print("Enter unit of measurement: ");
+            unit = k.nextLine();
+            n.ingredients.add(new Ingredient(unit, ingredient, amount)); // Add the ingredient to the array list
 
         } while (!ingredient.equals("%"));
     }
@@ -76,7 +71,7 @@ public class Actions {
             if (step.equals("%")) {
                 return; // When no more steps return
             }
-            n.steps.add(step);
+            n.steps.add(new Step(step));
         } while (!step.equals("%"));
     }
 
@@ -99,9 +94,9 @@ public class Actions {
         
         pw.println("\n" + n.name); // Printing the name tp the file
        
-        int sizeI = n.amount.size();
+        int sizeI = n.ingredients.size();
         for (int i = 0; i < sizeI; i++) { // For loop going through each ingredient
-            pw.println(n.amount.get(i) + " " + n.ingredients.get(i)); // Writing ingredient and amount to file
+            pw.println(n.ingredients.get(i).toString()); // Writing ingredient and amount to file
         }
 
         pw.println(";;"); // Writing the delimiter to the file

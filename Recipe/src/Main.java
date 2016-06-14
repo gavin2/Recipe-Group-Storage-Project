@@ -55,6 +55,10 @@ public class Main {
                     break;
                 case 'b':
                     a.readRecipe(recipeList);
+                    break;
+                case 'c':
+                    a.editRecipe(k, recipeList);
+                    break;
                 default:
                     System.out.println("Command not recognized. Please try again.");
                     action = k.nextLine().charAt(0);
