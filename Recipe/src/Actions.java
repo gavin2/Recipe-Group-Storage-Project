@@ -71,7 +71,8 @@ public class Actions {
     }
     
     public Step createStep(Scanner k) {
-        
+        Step s = new Step("hello");
+        return s;
     }
 
     /**
