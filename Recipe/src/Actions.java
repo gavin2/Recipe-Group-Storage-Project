@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -285,6 +286,22 @@ public class Actions {
                 n.ingredients.add(in, l);
             }
         } while (in != 0);
+    }
+    
+    public Recipe searchRec(ArrayList<Recipe> n, String name) {
+        int low = 0, high = n.size(), mid = 0; // Creating required variables
+
+        while (low <= high) { // While the lowest position is equal to or less than the highest position
+            mid = (low + high) / 2; // Finding the middle position
+            if (n.get(mid).name.compareTo(name) == 0) { // Checking if middle term and word are equal
+                return n.get(mid);
+            } else if (n.get(mid).name.compareTo(name) > 0) { // Checking if the word is greater than the middle term using compareTo
+                high = mid - 1; // Calculating new highest term
+            } else { // If it does not meet any other requires, the word must be less than the middle term
+                low = mid + 1; // Calculating new lowest term
+            }
+        }
+        return null;
     }
 
 }
