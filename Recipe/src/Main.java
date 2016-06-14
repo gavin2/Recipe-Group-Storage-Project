@@ -11,7 +11,7 @@ public class Main {
     /**
      * Jordan'S To Do List: Editing recipes, Removing steps/ingredients
      *
-     * DON'T FORGET TO PUT YOUR NAME ONE ANYTHING YOU CREATE
+     * DON'T FORGET TO PUT YOUR NAME ON ANYTHING YOU CREATE
      *
      * File IO - Adding recipes, reading recipes, editing recipes Adding - Ask
      * the user for the amount first (decimal) follow by the ingredient itself
