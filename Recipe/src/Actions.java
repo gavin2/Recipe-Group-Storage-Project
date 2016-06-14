@@ -51,9 +51,10 @@ public class Actions {
     }
 
     /**
-     * Gavin - 
-     * @param k
-     * @return 
+     * Gavin - Method to create an individual ingredient.
+     * 
+     * @param k Scanner to get input
+     * @return Returns an ingredient
      */
     public Ingredient createIngredient(Scanner k) {
         System.out.print("Enter ingredient name: ");
@@ -67,6 +68,10 @@ public class Actions {
         float a = k.nextFloat();
 
         return new Ingredient(u, n, a);
+    }
+    
+    public Step createStep(Scanner k) {
+        
     }
 
     /**
