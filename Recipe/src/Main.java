@@ -18,7 +18,7 @@ public class Main {
      * 
      * Gavin: - When a new recipe is created, add it in alphabetical order to the ArrayList
      *        - Create method to uses writeRecipe to write the whole ArrayList to the file when the program is closed
-     *        - Searching: for recipe and ingredient
+     *        - Searching: ingredient
      *        - Sort ArrayList of Recipes
      * 
      * DON'T FORGET TO PUT YOUR NAME ON ANYTHING YOU CREATE

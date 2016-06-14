@@ -288,6 +288,13 @@ public class Actions {
         } while (in != 0);
     }
     
+    /**
+     * Gavin - 
+     * 
+     * @param n
+     * @param name
+     * @return 
+     */
     public Recipe searchRec(ArrayList<Recipe> n, String name) {
         int low = 0, high = n.size(), mid = 0; // Creating required variables
 
