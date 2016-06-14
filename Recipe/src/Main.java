@@ -53,7 +53,7 @@ public class Main {
      */
     public static void getInput(Scanner k, Actions a) {
         File recipeList = new File("RecipeList.txt");
-        ArrayList<Recipe> allRecipes = new ArrayList<Recipe>(); // ArrayList to store all of the recipes, from file, 
+        ArrayList<Recipe> allRecipes = a.readRecipe(); // ArrayList to store all of the recipes, from file, 
 
         System.out.println("Add a\nRead in recipes b\nEdit recipe c\nSearch s");
         char action = k.nextLine().charAt(0);
