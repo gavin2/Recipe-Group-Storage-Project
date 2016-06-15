@@ -259,17 +259,21 @@ public class Actions {
             if (in > n.steps.size()) {
                 addSteps(n, k);
             } else if (in < n.steps.size()) {
-                System.out.println("This is the orginal step/n" + n.steps.get(in).getStep());
+                System.out.println("This is the orginal step\n" + n.steps.get(in).getStep());
+                System.out.println("What would you like to change it to?");
+                k.nextLine();
                 String newStep = k.nextLine();
-                n.steps.add(in, new Step(newStep));
+                n.steps.get(in).setStep(newStep);
+                System.out.println("This is the new step\n" + n.steps.get(in).getStep());
             }
             System.out.println("If you would like to edit another step, which one? Enter 0 to finish editing.");
+            in = k.nextInt();
         } while (in != 0);
-
+        System.exit(0);
     }
 
     /**
-     * Jordan
+     * Jordan - is the biggest dick!
      *
      * @param recipeList
      * @param n
@@ -283,7 +287,7 @@ public class Actions {
             if (in > n.ingredients.size()) {
                 addIngredients(n, k);
             } else if (in < n.ingredients.size()) {
-                System.out.println("This is the original ingredient/n" + n.ingredients.get(in));
+                System.out.println("This is the original ingredient\n" + n.ingredients.get(in));
                 Ingredient l = createIngredient(k);
                 n.ingredients.add(in, l);
             }
@@ -292,27 +296,28 @@ public class Actions {
 
     //public void groceryList(ArrayList<Recipe> n,){
     //}
+    
     /**
-     * Gavin - is a dick
+     * Gavin -
      *
      * @param n
      * @param name
      * @return
      */
-    public Recipe searchRec(ArrayList<Recipe> n, String name) {
+    public int searchRec(ArrayList<Recipe> n, String name) {
         int low = 0, high = n.size(), mid = 0; // Creating required variables
 
         while (low <= high) { // While the lowest position is equal to or less than the highest position
             mid = (low + high) / 2; // Finding the middle position
             if (n.get(mid).name.compareTo(name) == 0) { // Checking if middle term and word are equal
-                return n.get(mid);
+                return mid;
             } else if (n.get(mid).name.compareTo(name) > 0) { // Checking if the word is greater than the middle term using compareTo
                 high = mid - 1; // Calculating new highest term
             } else { // If it does not meet any other requires, the word must be less than the middle term
                 low = mid + 1; // Calculating new lowest term
             }
         }
-        return null;
+        return -1; // When that recipe isn't in the ArrayList
     }
 
     /**
@@ -322,37 +327,14 @@ public class Actions {
      * @param name
      * @return
      */
-//    public Ingredient searchIng(ArrayList<Ingredient> n, String name) {
-//        int low = 0, high = n.size(), mid = 0; // Creating required variables
-//
-//        while (low <= high) { // While the lowest position is equal to or less than the highest position
-//            mid = (low + high) / 2; // Finding the middle position
-//            if (n.get(mid).name.compareTo(name) == 0) { // Checking if middle term and word are equal
-//                return n.get(mid);
-//            } else if (n.get(mid).name.compareTo(name) > 0) { // Checking if the word is greater than the middle term using compareTo
-//                high = mid - 1; // Calculating new highest term
-//            } else { // If it does not meet any other requires, the word must be less than the middle term
-//                low = mid + 1; // Calculating new lowest term
-//            }
-//        }
-//        return null;
-//    }
+    public ArrayList<Recipe> searchIngredient(ArrayList<Recipe> n, String name) {
+        int length = n.size();
 
-    /**
-     * Gavin -
-     *
-     * @param n
-     * @param name
-     * @return
-     */
-//    public ArrayList<Recipe> searchIngredient(ArrayList<Recipe> n, String name) {
-//        int length = n.size();
-//
-//        for (int i = 0; i < length; i++) {
-//            ArrayList<Ingredient> current = n.get(i).ingredients;
-//            Collections.sort(current);
-//        }
-//
-//    }
+        for (int i = 0; i < length; i++) {
+            ArrayList<Ingredient> current = n.get(i).ingredients;
+            Collections.sort(current);
+        }
+
+    }
 
 }
