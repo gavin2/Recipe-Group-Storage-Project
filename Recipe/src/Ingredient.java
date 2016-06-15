@@ -2,7 +2,7 @@
  *
  * @author Gavin Christie
  */
-public class Ingredient {
+public class Ingredient implements Comparable<Ingredient> {
     private String ingredient;
     private float amount;
     private String unit;
@@ -84,5 +84,10 @@ public class Ingredient {
      */
     public String toString() {
         return amount + " " + unit + " " + ingredient;
+    }
+
+    @Override
+    public int compareTo(Ingredient o) {
+        return ingredient.compareTo(o.getI());
     }
 }
