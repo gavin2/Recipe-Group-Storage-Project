@@ -261,7 +261,7 @@ public class Actions {
                 System.out.println("What would you like to change it to?");
                 k.nextLine();
                 String newStep = k.nextLine();
-                n.steps.get(in).equals(newStep);
+                n.steps.get(in).setStep(newStep);
                 System.out.println("This is the new step\n" + n.steps.get(in).getStep());
             }
             System.out.println("If you would like to edit another step, which one? Enter 0 to finish editing.");
