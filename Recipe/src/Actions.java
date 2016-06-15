@@ -153,7 +153,6 @@ public class Actions {
     public ArrayList<Recipe> readRecipe(File recipeList) {
 
         ArrayList<Recipe> allRecipes = new ArrayList<Recipe>();
-        Recipe newRec = new Recipe();
 
         try {
             // create a scanner for the file
@@ -162,6 +161,7 @@ public class Actions {
 
             // for loop (to go through the entire file)
             for (int i = 0; i < fileLength; i++) {
+                Recipe newRec = new Recipe();
                 //every run of the for loop is a new recipe
 
                 // the first line is always the name
@@ -288,11 +288,9 @@ public class Actions {
             }
         } while (in != 0);
     }
-    
-    //public void groceryList(ArrayList<Recipe> n,){
-        
-    //}
 
+    //public void groceryList(ArrayList<Recipe> n,){
+    //}
     /**
      * Gavin - is a dick
      *
