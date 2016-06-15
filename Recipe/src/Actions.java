@@ -257,13 +257,17 @@ public class Actions {
             if (in > n.steps.size()) {
                 addSteps(n, k);
             } else if (in < n.steps.size()) {
-                System.out.println("This is the orginal step/n" + n.steps.get(in).getStep());
+                System.out.println("This is the orginal step\n" + n.steps.get(in).getStep());
+                System.out.println("What would you like to change it to?");
+                k.nextLine();
                 String newStep = k.nextLine();
-                n.steps.add(in, new Step(newStep));
+                n.steps.get(in).equals(newStep);
+                System.out.println("This is the new step\n" + n.steps.get(in).getStep());
             }
             System.out.println("If you would like to edit another step, which one? Enter 0 to finish editing.");
+            in = k.nextInt();
         } while (in != 0);
-
+        System.exit(0);
     }
 
     /**
@@ -281,17 +285,15 @@ public class Actions {
             if (in > n.ingredients.size()) {
                 addIngredients(n, k);
             } else if (in < n.ingredients.size()) {
-                System.out.println("This is the original ingredient/n" + n.ingredients.get(in));
+                System.out.println("This is the original ingredient\n" + n.ingredients.get(in));
                 Ingredient l = createIngredient(k);
                 n.ingredients.add(in, l);
             }
         } while (in != 0);
     }
-    
-    //public void groceryList(ArrayList<Recipe> n,){
-        
-    //}
 
+    //public void groceryList(ArrayList<Recipe> n,){
+    //}
     /**
      * Gavin - is a dick
      *
