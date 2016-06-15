@@ -257,7 +257,7 @@ public class Actions {
             if (in > n.steps.size()) {
                 addSteps(n, k);
             } else if (in < n.steps.size()) {
-                System.out.println("This is the orginal step/n" + n.steps.get(in));
+                System.out.println("This is the orginal step/n" + n.steps.get(in).getStep());
                 String newStep = k.nextLine();
                 n.steps.add(in, new Step(newStep));
             }
