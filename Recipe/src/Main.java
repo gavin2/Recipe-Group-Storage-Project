@@ -20,6 +20,8 @@ public class Main {
      * - Sort ArrayList of Recipes Ask them what sub category their recipe
      * belongs in before they add it --soup entree desert appetizer 
      * Also add number of servings
+     * - Get time and servings
+     * - Write to file
      *
      * DON'T FORGET TO PUT YOUR NAME ON ANYTHING YOU CREATE
      *
@@ -54,6 +56,7 @@ public class Main {
     public static void getInput(Scanner k, Actions a) {
         File recipeList = new File("RecipeList.txt");
         ArrayList<Recipe> allRecipes = a.readRecipe(recipeList); // ArrayList to store all of the recipes, from file
+        Collections.sort(allRecipes);
 
         System.out.println("Add a\nRead in recipes b\nEdit recipe c\nSearch s");
         char action = k.nextLine().charAt(0);
