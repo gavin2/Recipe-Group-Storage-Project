@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -153,7 +154,6 @@ public class Actions {
     public ArrayList<Recipe> readRecipe(File recipeList) {
 
         ArrayList<Recipe> allRecipes = new ArrayList<Recipe>();
-        Recipe newRec = new Recipe();
 
         try {
             // create a scanner for the file
@@ -162,6 +162,7 @@ public class Actions {
 
             // for loop (to go through the entire file)
             for (int i = 0; i < fileLength; i++) {
+                Recipe newRec = new Recipe();
                 //every run of the for loop is a new recipe
 
                 // the first line is always the name
@@ -201,10 +202,11 @@ public class Actions {
     /**
      * Carter
      *
-     * @param fileRead the scanner for the file
+     * @param fileRead the scanner for the file (so we don't have like, a
+     * billion scanners)
      * @param file the file to be read from
      * @return an integer, representing how many recipes are in the file
-     * (recipes are separated by two hyphens "--")
+     * (recipes are separated by two hyphens "--") "-1" means there is an error.
      */
     public int fileLength(Scanner fileRead, File file) {
         //get the length of the file (each string)
@@ -316,5 +318,45 @@ public class Actions {
         }
         return null;
     }
+
+    /**
+     * Gavin -
+     *
+     * @param n
+     * @param name
+     * @return
+     */
+//    public Ingredient searchIng(ArrayList<Ingredient> n, String name) {
+//        int low = 0, high = n.size(), mid = 0; // Creating required variables
+//
+//        while (low <= high) { // While the lowest position is equal to or less than the highest position
+//            mid = (low + high) / 2; // Finding the middle position
+//            if (n.get(mid).name.compareTo(name) == 0) { // Checking if middle term and word are equal
+//                return n.get(mid);
+//            } else if (n.get(mid).name.compareTo(name) > 0) { // Checking if the word is greater than the middle term using compareTo
+//                high = mid - 1; // Calculating new highest term
+//            } else { // If it does not meet any other requires, the word must be less than the middle term
+//                low = mid + 1; // Calculating new lowest term
+//            }
+//        }
+//        return null;
+//    }
+
+    /**
+     * Gavin -
+     *
+     * @param n
+     * @param name
+     * @return
+     */
+//    public ArrayList<Recipe> searchIngredient(ArrayList<Recipe> n, String name) {
+//        int length = n.size();
+//
+//        for (int i = 0; i < length; i++) {
+//            ArrayList<Ingredient> current = n.get(i).ingredients;
+//            Collections.sort(current);
+//        }
+//
+//    }
 
 }

@@ -13,8 +13,6 @@ public class Main {
     /**
      * Jordan'S To Do List: Editing recipes, Removing steps/ingredients
      *
-     * Carter: ArrayList of recipes from the file --> Need for your method,
-     * readRecipe, to return the ArrayList to the getInput method
      *
      * Gavin: - When a new recipe is created, add it in alphabetical order to
      * the ArrayList - Create method to uses writeRecipe to write the whole
@@ -55,7 +53,7 @@ public class Main {
      */
     public static void getInput(Scanner k, Actions a) {
         File recipeList = new File("RecipeList.txt");
-        ArrayList<Recipe> allRecipes = a.readRecipe(recipeList); // ArrayList to store all of the recipes, from file, 
+        ArrayList<Recipe> allRecipes = a.readRecipe(recipeList); // ArrayList to store all of the recipes, from file
 
         System.out.println("Add a\nRead in recipes b\nEdit recipe c\nSearch s");
         char action = k.nextLine().charAt(0);
@@ -68,7 +66,7 @@ public class Main {
                     Collections.sort(allRecipes);
                     break;
                 case 'b':
-                    a.readRecipe(recipeList);
+                    a.readRecipe(recipeList); //testing purposes only
                     break;
                 case 'c':
                     a.editRecipe(allRecipes, k);
@@ -77,6 +75,7 @@ public class Main {
                     System.out.print("Name of recipe: ");
                     String name = k.nextLine();
                     a.searchRec(allRecipes, name);
+                    break;
                 default:
                     break;
             }
