@@ -19,7 +19,9 @@ public class Main {
      * Gavin: - When a new recipe is created, add it in alphabetical order to
      * the ArrayList - Create method to uses writeRecipe to write the whole
      * ArrayList to the file when the program is closed - Searching: ingredient
-     * - Sort ArrayList of Recipes
+     * - Sort ArrayList of Recipes Ask them what sub category their recipe
+     * belongs in before they add it --soup entree desert appetizer 
+     * Also add number of servings
      *
      * DON'T FORGET TO PUT YOUR NAME ON ANYTHING YOU CREATE
      *
