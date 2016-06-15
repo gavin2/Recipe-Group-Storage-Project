@@ -269,7 +269,7 @@ public class Actions {
     }
 
     /**
-     * Jordan
+     * Jordan - is the biggest dick!
      *
      * @param recipeList
      * @param n
@@ -293,7 +293,7 @@ public class Actions {
     //public void groceryList(ArrayList<Recipe> n,){
     //}
     /**
-     * Gavin - is a dick
+     * Gavin -
      *
      * @param n
      * @param name
