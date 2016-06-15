@@ -16,9 +16,12 @@ public class Main {
      * Carter: ArrayList of recipes from the file --> Need for your method,
      * readRecipe, to return the ArrayList to the getInput method
      *
-     * Gavin: - Create method to uses writeRecipe to write the whole
-     *          ArrayList to the file when the program is closed - Searching: ingredient
-     *        - Sort ArrayList of Recipes
+     * Gavin: - When a new recipe is created, add it in alphabetical order to
+     * the ArrayList - Create method to uses writeRecipe to write the whole
+     * ArrayList to the file when the program is closed - Searching: ingredient
+     * - Sort ArrayList of Recipes Ask them what sub category their recipe
+     * belongs in before they add it --soup entree desert appetizer 
+     * Also add number of servings
      *
      * DON'T FORGET TO PUT YOUR NAME ON ANYTHING YOU CREATE
      *
@@ -68,7 +71,7 @@ public class Main {
                     a.readRecipe(recipeList);
                     break;
                 case 'c':
-                    a.editRecipe(k, recipeList);
+                    a.editRecipe(allRecipes, k);
                     break;
                 case 's':
                     System.out.print("Name of recipe: ");

@@ -229,16 +229,17 @@ public class Actions {
      * @param k
      * @param recipeList
      */
-    public void editRecipe(Scanner k, File recipeList) {
+    public void editRecipe(ArrayList<Recipe> l, Scanner k) {
         System.out.println("What recipe would you like to edit?");
         String n = k.nextLine();
+        Recipe h = searchRec(l, n);
         System.out.println("What would you like to do?\n a- edit steps\n b- edit ingredients\n c-remove steps\n d- remove ingredients");
         String choice = k.nextLine();
         choice.toLowerCase();
         if (choice.equals("a")) {
-            //editRecipeSteps(recipeList, n, k);
+            editRecipeSteps(h, k);
         } else if (choice.equals("b")) {
-            //editRecipeIngredients(recipeList, n, k);
+            editRecipeIngredients(h, k);
         }
     }
 
@@ -249,8 +250,7 @@ public class Actions {
      * @param n
      * @param k
      */
-    public void editRecipeSteps(File recipeList, Recipe n, Scanner k) {
-        readRecipe(recipeList);
+    public void editRecipeSteps(Recipe n, Scanner k) {
         String step;
         System.out.println("Which step would you like to edit? Enter 0 to finish editing.");
         int in = k.nextInt();
@@ -258,7 +258,7 @@ public class Actions {
             if (in > n.steps.size()) {
                 addSteps(n, k);
             } else if (in < n.steps.size()) {
-                System.out.println("This is the orginal step/n" + n.steps.get(in));
+                System.out.println("This is the orginal step/n" + n.steps.get(in).getStep());
                 String newStep = k.nextLine();
                 n.steps.add(in, new Step(newStep));
             }
@@ -274,8 +274,7 @@ public class Actions {
      * @param n
      * @param k
      */
-    public void editRecipeIngredients(File recipeList, Recipe n, Scanner k) {
-        readRecipe(recipeList);
+    public void editRecipeIngredients(Recipe n, Scanner k) {
         String ingredient;
         System.out.println("Which ingredient would you like to edit? Please enter the index of it. Enter 0 to finish editing.");
         int in = k.nextInt();
@@ -289,9 +288,13 @@ public class Actions {
             }
         } while (in != 0);
     }
+    
+    //public void groceryList(ArrayList<Recipe> n,){
+        
+    //}
 
     /**
-     * Gavin -
+     * Gavin - is a dick
      *
      * @param n
      * @param name
