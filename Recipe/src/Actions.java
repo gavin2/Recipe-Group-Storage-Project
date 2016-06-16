@@ -149,7 +149,7 @@ public class Actions {
             pw.println(n.ingredients.get(i).toString()); // Writing ingredient and amount to file
         }
 
-        pw.println(";;\nTime " + n.time + "\n" + n.servings + " Servings"); // Writing the delimiter to the file
+        pw.println(";;\n" + n.servings + " Servings" + "\nTime " + n.time); // Writing the delimiter to the file
 
         size = n.steps.size(); // The number of steps in the recipe
 
