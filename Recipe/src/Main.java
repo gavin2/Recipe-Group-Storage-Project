@@ -18,6 +18,7 @@ public class Main {
      * Gavin: - Ask them what sub category their recipe belongs in before they
      *          add it --> soup entree desert appetizer
      *        - Search based on category
+     *        - Everything lowercase
      *
      * DON'T FORGET TO PUT YOUR NAME ON ANYTHING YOU CREATE
      *
