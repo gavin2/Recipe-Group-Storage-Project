@@ -2,6 +2,7 @@
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 /**
@@ -15,7 +16,8 @@ public class Main {
      *
      *
      * Gavin: - Ask them what sub category their recipe belongs in before they
-     * add it --> soup entree desert appetizer
+     *          add it --> soup entree desert appetizer
+     *        - Search based on category
      *
      * DON'T FORGET TO PUT YOUR NAME ON ANYTHING YOU CREATE
      *
@@ -45,7 +47,7 @@ public class Main {
         ArrayList<Recipe> allRecipes = a.readRecipe(recipeList); // ArrayList to store all of the recipes, from file
         Collections.sort(allRecipes);
 
-        System.out.println("Add a\nEdit recipe c\nExit e\nSearch s");
+        System.out.println("Add a\nEdit recipe c\nSearch s\nSort with category f\nExit e");
         char action = k.nextLine().charAt(0);
 
         while (action != '-') {
@@ -64,6 +66,9 @@ public class Main {
                 case 'e':
                     a.writer(allRecipes, recipeList);
                     System.exit(0);
+                case 'f':
+                    Collections.sort(allRecipes, Recipe.CategoryComparator);
+                    break;
                 case 's':
                     System.out.print("Name of recipe: ");
                     String name = k.nextLine();
