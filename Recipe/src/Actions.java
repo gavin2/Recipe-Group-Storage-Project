@@ -250,7 +250,7 @@ public class Actions {
     public void editRecipe(ArrayList<Recipe> l, Scanner k) {
         System.out.println("What recipe would you like to edit?");
         String n = k.nextLine();
-        Recipe h = searchRec(l, n);
+        Recipe h  = l.get(searchRec(l, n));
         System.out.println("What would you like to do?\n a- edit steps\n b- edit ingredients\n c-remove steps\n d- remove ingredients");
         String choice = k.nextLine();
         choice.toLowerCase();
