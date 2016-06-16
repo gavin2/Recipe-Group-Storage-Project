@@ -1,3 +1,4 @@
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -29,7 +30,12 @@ public class Actions {
         newR.name = k.nextLine(); // Getting the recipe name
         addIngredients(newR, k); // Adding ingredients
         addSteps(newR, k); // Adding the steps to the recipe
-        
+
+        System.out.print("Total time (h:mn): ");
+        newR.time = k.nextLine().trim();
+        System.out.print("Number of servings");
+        newR.servings = Float.parseFloat(k.nextLine());
+
         System.out.print("Total time (h:mn): ");
         newR.time = k.nextLine().trim();
         System.out.print("Number of servings");
@@ -114,12 +120,12 @@ public class Actions {
             n.steps.add(step);
         } while (true);
     }
-    
+
     /**
-     * Gavin - 
-     * 
+     * Gavin -
+     *
      * @param n
-     * @param recipeList 
+     * @param recipeList
      */
     public void writer(ArrayList<Recipe> n, File recipeList) {
         int l = n.size();
@@ -184,6 +190,7 @@ public class Actions {
 
                 // the first line is always the name
                 newRec.name = fileRead.nextLine();
+                newRec.catagory = fileRead.nextLine();
                 String temp = "";
                 while (!temp.equals(";;")) {
                     temp = fileRead.next().trim();
@@ -191,14 +198,9 @@ public class Actions {
                     } else {
                         newRec.ingredients.add(new Ingredient(fileRead.next().trim(),
                                 fileRead.nextLine().trim(), Float.parseFloat(temp)));
-                        /**
-                         * Change above needs to be tested Check to see if new
-                         * createIngredient and createStep can be use when
-                         * reading from the file.
-                         */
                     }
                 }
-                temp = fileRead.nextLine().trim();
+                newRec.servings = Float.parseFloat(fileRead.next());
                 while (!temp.equals("--")) {
                     temp = fileRead.nextLine().trim();
                     // add every line to a next step 
@@ -242,6 +244,19 @@ public class Actions {
     }
 
     /**
+     * Carter
+     *
+     *
+     * @param recipe the recipe array list
+     * @param k the scanner to be passed on to this method
+     */
+    public void ingredientScaling(ArrayList<Recipe> recipe, Scanner k) {
+        System.out.println("Current servings: " + recipe.get(0) + "\n how many servings would you like to make? ");
+        int scalingNum = k.nextInt();
+
+    }
+
+    /**
      * Jordan
      *
      * @param k
@@ -250,16 +265,30 @@ public class Actions {
     public void editRecipe(ArrayList<Recipe> l, Scanner k) {
         System.out.println("What recipe would you like to edit?");
         String n = k.nextLine();
-        Recipe h  = l.get(searchRec(l, n));
-        System.out.println("What would you like to do?\n a- edit steps\n b- edit ingredients\n c-remove steps\n d- remove ingredients");
+        Recipe h = l.get(searchRec(l, n));
+        System.out.println("What would you like to do?\n a- edit steps\n b- edit ingredients\n c-remove steps\n d- remove ingredients\n e- return to main menu");
         String choice = k.nextLine();
         choice.toLowerCase();
-        if (choice.equals("a")) {
-            editRecipeSteps(l, h, k);
-        } else if (choice.equals("b")) {
-            editRecipeIngredients(l, h, k);
+
+        switch (choice) {
+            case "a":
+                editRecipeSteps(l, h, k);
+                break;
+            case "b":
+                editRecipeIngredients(l, h, k);
+                break;
+            case "c":
+                //removeRecipeSteps
+                break;
+            case "d":
+                //removeRecipeIngredients
+                break;
+            case "e":
+                return;
+            default:
+                break;
         }
-        
+
     }
 
     /**
@@ -269,7 +298,7 @@ public class Actions {
      * @param n
      * @param k
      */
-    public void editRecipeSteps(ArrayList<Recipe> l,Recipe n, Scanner k) {
+    public void editRecipeSteps(ArrayList<Recipe> l, Recipe n, Scanner k) {
         String step;
         System.out.println("Which step would you like to edit? Enter 0 to finish editing.");
         int in = k.nextInt();
@@ -291,7 +320,7 @@ public class Actions {
     }
 
     /**
-     * Jordan - is the biggest dick!
+     * Jordan
      *
      * @param recipeList
      * @param n
@@ -310,19 +339,21 @@ public class Actions {
                 n.ingredients.add(in, i);
             }
         } while (in != 0);
+        return;
     }
 
-    public void groceryList(ArrayList<Recipe> n, Scanner k){
+    public void groceryList(ArrayList<Recipe> n, Scanner k) {
         System.out.println("Which recipe would you like to obtain a grocery list for?");
         String r = k.nextLine();
         Recipe h = n.get(searchRec(n, r));
         System.out.println("How many servings would you like to have?");
-        //int s = k.nextInt();
+        int s = k.nextInt();
         //Call carter's thing
-        for(int b = 0; b < h.ingredients.size(); b++){
+        for (int b = 0; b < h.ingredients.size(); b++) {
             System.out.println(h.ingredients.get(b).toString());
         }
     }
+
     /**
      * Gavin -
      *
@@ -391,8 +422,6 @@ public class Actions {
                 }
             }
         }
-        
         return recWithIng;
     }
-
 }

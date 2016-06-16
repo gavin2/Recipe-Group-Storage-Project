@@ -74,6 +74,8 @@ public class Main {
                     String name = k.nextLine();
                     a.searchRec(allRecipes, name);
                     break;
+                case 'q':
+                    a.ingredientScaling(allRecipes, k);
                 default:
                     break;
             }
