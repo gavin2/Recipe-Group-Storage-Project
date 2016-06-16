@@ -315,7 +315,7 @@ public class Actions {
     public void groceryList(ArrayList<Recipe> n, Scanner k){
         System.out.println("Which recipe would you like to obtain a grocery list for?");
         String r = k.nextLine();
-        Recipe h = searchRec(n, r);
+        Recipe h = n.get(searchRec(n, r));
         System.out.println("How many servings would you like to have?");
         //int s = k.nextInt();
         //Call carter's thing
