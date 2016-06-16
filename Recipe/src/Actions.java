@@ -36,6 +36,11 @@ public class Actions {
         System.out.print("Number of servings");
         newR.servings = Float.parseFloat(k.nextLine());
 
+        System.out.print("Total time (h:mn): ");
+        newR.time = k.nextLine().trim();
+        System.out.print("Number of servings");
+        newR.servings = Float.parseFloat(k.nextLine());
+
         return newR;
     }
 
@@ -321,8 +326,6 @@ public class Actions {
         } while (in != 0);
     }
 
-//public void groceryList(ArrayList<Recipe> n,){
-    //}
     public void groceryList(ArrayList<Recipe> n, Scanner k) {
         System.out.println("Which recipe would you like to obtain a grocery list for?");
         String r = k.nextLine();
@@ -342,7 +345,6 @@ public class Actions {
      * @param name
      * @return
      */
-
     public int searchRec(ArrayList<Recipe> n, String name) {
         int low = 0, high = n.size(), mid = 0; // Creating required variables
 
@@ -404,8 +406,6 @@ public class Actions {
                 }
             }
         }
-
         return recWithIng;
     }
-
 }
