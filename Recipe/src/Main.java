@@ -18,18 +18,15 @@ public class Main {
      * the ArrayList - Create method to uses writeRecipe to write the whole
      * ArrayList to the file when the program is closed - Searching: ingredient
      * - Sort ArrayList of Recipes Ask them what sub category their recipe
-     * belongs in before they add it --soup entree desert appetizer 
-     * Also add number of servings
-     * - Get time and servings
-     * - Write to file
+     * belongs in before they add it --soup entree desert appetizer Also add
+     * number of servings - Get time and servings - Write to file
      *
      * DON'T FORGET TO PUT YOUR NAME ON ANYTHING YOU CREATE
      *
-     * File IO - Adding recipes, editing recipes Adding - Ask
-     * the user for the amount first (decimal) follow by the ingredient itself
-     * (singular) - After a special character has been entered, the user will
-     * enter the steps - Each new line is a different step (just like in the
-     * text file)
+     * File IO - Adding recipes, editing recipes Adding - Ask the user for the
+     * amount first (decimal) follow by the ingredient itself (singular) - After
+     * a special character has been entered, the user will enter the steps -
+     * Each new line is a different step (just like in the text file)
      *
      * Searching for recipes
      *
@@ -79,6 +76,8 @@ public class Main {
                     String name = k.nextLine();
                     a.searchRec(allRecipes, name);
                     break;
+                case 'q':
+                    a.ingredientScaling(allRecipes, k);
                 default:
                     break;
             }

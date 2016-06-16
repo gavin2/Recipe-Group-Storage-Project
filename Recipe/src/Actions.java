@@ -174,14 +174,9 @@ public class Actions {
                     } else {
                         newRec.ingredients.add(new Ingredient(fileRead.next().trim(),
                                 fileRead.nextLine().trim(), Float.parseFloat(temp)));
-                        /**
-                         * Change above needs to be tested Check to see if new
-                         * createIngredient and createStep can be use when
-                         * reading from the file.
-                         */
                     }
                 }
-                temp = fileRead.nextLine().trim();
+                newRec.servings = Float.parseFloat(fileRead.next());
                 while (!temp.equals("--")) {
                     temp = fileRead.nextLine().trim();
                     // add every line to a next step 
@@ -222,6 +217,19 @@ public class Actions {
             Logger.getLogger(Actions.class.getName()).log(Level.SEVERE, null, ex);
             return -1;
         }
+    }
+
+    /**
+     * Carter
+     *
+     *
+     * @param recipe the recipe array list
+     * @param k the scanner to be passed on to this method
+     */
+    public void ingredientScaling(ArrayList<Recipe> recipe, Scanner k) {
+        System.out.println("Current servings: " + recipe.get(0) + "\n how many servings would you like to make? ");
+        int scalingNum = k.nextInt();
+
     }
 
     /**
@@ -296,7 +304,6 @@ public class Actions {
 
     //public void groceryList(ArrayList<Recipe> n,){
     //}
-    
     /**
      * Gavin -
      *
