@@ -1,4 +1,3 @@
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -296,7 +295,6 @@ public class Actions {
 
     //public void groceryList(ArrayList<Recipe> n,){
     //}
-    
     /**
      * Gavin -
      *
@@ -317,7 +315,30 @@ public class Actions {
                 low = mid + 1; // Calculating new lowest term
             }
         }
-        return -1; // When that recipe isn't in the ArrayList
+        return -1; // When no recipe the same return -1 since it is not an index
+    }
+
+    /**
+     * Gavin -
+     *
+     * @param n
+     * @param name
+     * @return
+     */
+    public int searchIng(ArrayList<Ingredient> n, String name) {
+        int low = 0, high = n.size(), mid = 0; // Creating required variables
+
+        while (low <= high) { // While the lowest position is equal to or less than the highest position
+            mid = (low + high) / 2; // Finding the middle position
+            if (n.get(mid).getI().compareTo(name) == 0) { // Checking if middle term and word are equal
+                return mid;
+            } else if (n.get(mid).getI().compareTo(name) > 0) { // Checking if the word is greater than the middle term using compareTo
+                high = mid - 1; // Calculating new highest term
+            } else { // If it does not meet any other requires, the word must be less than the middle term
+                low = mid + 1; // Calculating new lowest term
+            }
+        }
+        return -1; // When no ingredient the same return -1 since it is not an index
     }
 
     /**
@@ -329,12 +350,21 @@ public class Actions {
      */
     public ArrayList<Recipe> searchIngredient(ArrayList<Recipe> n, String name) {
         int length = n.size();
+        ArrayList<Recipe> recWithIng = new ArrayList<Recipe>();
 
         for (int i = 0; i < length; i++) {
             ArrayList<Ingredient> current = n.get(i).ingredients;
             Collections.sort(current);
+            int li = current.size();
+            for (int j = 0; j < li; j++) {
+                if (current.get(j).getI().equals(name)) {
+                    recWithIng.add(n.get(i));
+                    j = li++;
+                }
+            }
         }
-
+        
+        return recWithIng;
     }
 
 }
