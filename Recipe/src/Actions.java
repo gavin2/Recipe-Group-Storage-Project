@@ -238,10 +238,11 @@ public class Actions {
         String choice = k.nextLine();
         choice.toLowerCase();
         if (choice.equals("a")) {
-            editRecipeSteps(h, k);
+            editRecipeSteps(l, h, k);
         } else if (choice.equals("b")) {
-            editRecipeIngredients(h, k);
+            editRecipeIngredients(l, h, k);
         }
+        
     }
 
     /**
@@ -251,7 +252,7 @@ public class Actions {
      * @param n
      * @param k
      */
-    public void editRecipeSteps(Recipe n, Scanner k) {
+    public void editRecipeSteps(ArrayList<Recipe> l,Recipe n, Scanner k) {
         String step;
         System.out.println("Which step would you like to edit? Enter 0 to finish editing.");
         int in = k.nextInt();
@@ -269,7 +270,7 @@ public class Actions {
             System.out.println("If you would like to edit another step, which one? Enter 0 to finish editing.");
             in = k.nextInt();
         } while (in != 0);
-        System.exit(0);
+        return;
     }
 
     /**
@@ -279,7 +280,7 @@ public class Actions {
      * @param n
      * @param k
      */
-    public void editRecipeIngredients(Recipe n, Scanner k) {
+    public void editRecipeIngredients(ArrayList<Recipe> l, Recipe n, Scanner k) {
         String ingredient;
         System.out.println("Which ingredient would you like to edit? Please enter the index of it. Enter 0 to finish editing.");
         int in = k.nextInt();
@@ -288,14 +289,23 @@ public class Actions {
                 addIngredients(n, k);
             } else if (in < n.ingredients.size()) {
                 System.out.println("This is the original ingredient\n" + n.ingredients.get(in));
-                Ingredient l = createIngredient(k);
-                n.ingredients.add(in, l);
+                Ingredient i = createIngredient(k);
+                n.ingredients.add(in, i);
             }
         } while (in != 0);
     }
 
-    //public void groceryList(ArrayList<Recipe> n,){
-    //}
+    public void groceryList(ArrayList<Recipe> n, Scanner k){
+        System.out.println("Which recipe would you like to obtain a grocery list for?");
+        String r = k.nextLine();
+        Recipe h = searchRec(n, r);
+        System.out.println("How many servings would you like to have?");
+        //int s = k.nextInt();
+        //Call carter's thing
+        for(int b = 0; b < h.ingredients.size(); b++){
+            System.out.println(h.ingredients.get(b).toString());
+        }
+    }
     /**
      * Gavin - is a dick
      *

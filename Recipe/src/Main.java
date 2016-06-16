@@ -55,7 +55,7 @@ public class Main {
         File recipeList = new File("RecipeList.txt");
         ArrayList<Recipe> allRecipes = a.readRecipe(recipeList); // ArrayList to store all of the recipes, from file
 
-        System.out.println("Add a\nRead in recipes b\nEdit recipe c\nSearch s");
+        System.out.println("Add a\nRead in recipes b\nEdit recipe c\nCreate grocery list d\nSearch s");
         char action = k.nextLine().charAt(0);
 
         while (action != '-') {
@@ -70,6 +70,9 @@ public class Main {
                     break;
                 case 'c':
                     a.editRecipe(allRecipes, k);
+                    break;
+                case 'd':
+                    a.groceryList(allRecipes, k);
                     break;
                 case 's':
                     System.out.print("Name of recipe: ");
