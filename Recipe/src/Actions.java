@@ -29,6 +29,11 @@ public class Actions {
         newR.name = k.nextLine(); // Getting the recipe name
         addIngredients(newR, k); // Adding ingredients
         addSteps(newR, k); // Adding the steps to the recipe
+        
+        System.out.print("Total time (h:mn): ");
+        newR.time = k.nextLine().trim();
+        System.out.print("Number of servings");
+        newR.servings = Float.parseFloat(k.nextLine());
 
         return newR;
     }
@@ -109,6 +114,19 @@ public class Actions {
             n.steps.add(step);
         } while (true);
     }
+    
+    /**
+     * Gavin - 
+     * 
+     * @param n
+     * @param recipeList 
+     */
+    public void writer(ArrayList<Recipe> n, File recipeList) {
+        int l = n.size();
+        for (int i = 0; i < l; i++) {
+            writeRecipe(n.get(i), recipeList);
+        }
+    }
 
     /**
      * Gavin - Method used to write the whole recipe to the file.
@@ -118,20 +136,20 @@ public class Actions {
      */
     public void writeRecipe(Recipe n, File recipeList) {
         try { // Try - catch to create the print writer
-            pw = new PrintWriter(new FileWriter(recipeList, true));
+            pw = new PrintWriter(new FileWriter(recipeList, false));
         } catch (IOException ex) {
             System.out.print("Problem creating the print writer.");
             Logger.getLogger(Actions.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        pw.println("\n" + n.name); // Printing the name tp the file
+        pw.println("\n" + n.name); // Printing the name to the file
 
         int size = n.ingredients.size();
         for (int i = 0; i < size; i++) { // For loop going through each ingredient
             pw.println(n.ingredients.get(i).toString()); // Writing ingredient and amount to file
         }
 
-        pw.println(";;"); // Writing the delimiter to the file
+        pw.println(";;\nTime " + n.time + "\n" + n.servings + " Servings"); // Writing the delimiter to the file
 
         size = n.steps.size(); // The number of steps in the recipe
 

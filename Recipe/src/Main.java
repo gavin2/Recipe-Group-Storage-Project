@@ -14,30 +14,17 @@ public class Main {
      * Jordan'S To Do List: Editing recipes, Removing steps/ingredients
      *
      *
-     * Gavin: - When a new recipe is created, add it in alphabetical order to
-     * the ArrayList - Create method to uses writeRecipe to write the whole
-     * ArrayList to the file when the program is closed - Searching: ingredient
-     * - Sort ArrayList of Recipes Ask them what sub category their recipe
-     * belongs in before they add it --soup entree desert appetizer 
-     * Also add number of servings
-     * - Get time and servings
-     * - Write to file
+     * Gavin: - Ask them what sub category their recipe belongs in before they
+     * add it --> soup entree desert appetizer
      *
      * DON'T FORGET TO PUT YOUR NAME ON ANYTHING YOU CREATE
-     *
-     * File IO - Adding recipes, editing recipes Adding - Ask
-     * the user for the amount first (decimal) follow by the ingredient itself
-     * (singular) - After a special character has been entered, the user will
-     * enter the steps - Each new line is a different step (just like in the
-     * text file)
      *
      * Searching for recipes
      *
      * Generate shopping lists - Recipe scaling
      *
-     * GUI - Last Please
-     *
      */
+    
     /**
      * @param args the command line arguments
      */
@@ -58,7 +45,7 @@ public class Main {
         ArrayList<Recipe> allRecipes = a.readRecipe(recipeList); // ArrayList to store all of the recipes, from file
         Collections.sort(allRecipes);
 
-        System.out.println("Add a\nRead in recipes b\nEdit recipe c\nSearch s");
+        System.out.println("Add a\nEdit recipe c\nExit e\nSearch s");
         char action = k.nextLine().charAt(0);
 
         while (action != '-') {
@@ -74,6 +61,9 @@ public class Main {
                 case 'c':
                     a.editRecipe(allRecipes, k);
                     break;
+                case 'e':
+                    a.writer(allRecipes, recipeList);
+                    System.exit(0);
                 case 's':
                     System.out.print("Name of recipe: ");
                     String name = k.nextLine();
