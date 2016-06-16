@@ -258,16 +258,30 @@ public class Actions {
     }
 
     /**
-     * Jordan
-     *
-     * @param k
-     * @param recipeList
+     * Jordan 
+     * 
+     * A method that allows the user to enter a specific recipe and then edit it
+     * 
+     * @param l An array list of all the recipes
+     * @param k The scanner being used to obtain information from the user
      */
     public void editRecipe(ArrayList<Recipe> l, Scanner k) {
-        System.out.println("What recipe would you like to edit?");
+        int a;
+        Recipe h = null;
+        System.out.print("What recipe would you like to edit?");
         String n = k.nextLine();
-        Recipe h = l.get(searchRec(l, n));
-        System.out.println("What would you like to do?\n a- edit steps\n b- edit ingredients\n c-remove steps\n d- remove ingredients\n e- return to main menu");
+        n.toLowerCase();
+        a = searchRec(l, n);
+        if (a != -1) {
+            h = l.get(a);
+        }
+        else{
+            System.out.println("There was a problem finding that recipe");
+            return;
+        }
+
+        System.out.println("What would you like to do?\n a- edit steps\n "
+                + "b- edit ingredients\n c-remove steps\n d- remove ingredients\n e- return to main menu");
         String choice = k.nextLine();
         choice.toLowerCase();
 
@@ -294,14 +308,14 @@ public class Actions {
 
     /**
      * Jordan
-     *
-     * @param recipeList
-     * @param n
-     * @param k
+     * 
+     * @param l An array list of all the recipes
+     * @param n The recipe the user would like to edit
+     * @param k The scanner being used to obtain information from the user
      */
     public void editRecipeSteps(ArrayList<Recipe> l, Recipe n, Scanner k) {
         String step;
-        System.out.println("Which step would you like to edit? Enter 0 to finish editing.");
+        System.out.print("Which step would you like to edit? Enter 0 to finish editing. ");
         int in = k.nextInt();
         do {
             if (in > n.steps.size()) {
@@ -311,10 +325,11 @@ public class Actions {
                 System.out.println("What would you like to change it to?");
                 k.nextLine();
                 String newStep = k.nextLine();
+                newStep.toLowerCase();
                 n.steps.get(in).setStep(newStep);
                 System.out.println("This is the new step\n" + n.steps.get(in).getStep());
             }
-            System.out.println("If you would like to edit another step, which one? Enter 0 to finish editing.");
+            System.out.print("If you would like to edit another step, which one? Enter 0 to finish editing. ");
             in = k.nextInt();
         } while (in != 0);
         return;
@@ -322,14 +337,14 @@ public class Actions {
 
     /**
      * Jordan
-     *
-     * @param recipeList
-     * @param n
-     * @param k
+     * 
+     * @param l An array list of all the recipes
+     * @param n The recipe the user would like to edit
+     * @param k The scanner being used to obtain information from the user
      */
     public void editRecipeIngredients(ArrayList<Recipe> l, Recipe n, Scanner k) {
         String ingredient;
-        System.out.println("Which ingredient would you like to edit? Please enter the index of it. Enter 0 to finish editing.");
+        System.out.print("Which ingredient would you like to edit? Please enter the index of it. Enter 0 to finish editing. ");
         int in = k.nextInt();
         do {
             if (in > n.ingredients.size()) {
@@ -338,11 +353,22 @@ public class Actions {
                 System.out.println("This is the original ingredient\n" + n.ingredients.get(in));
                 Ingredient i = createIngredient(k);
                 n.ingredients.add(in, i);
+                System.out.println("This is the new ingredient\n" + n.ingredients.get(in));
             }
+            System.out.print("If you would like to edit another ingredient, which one? Enter 0 to finish editing. ");
+            in = k.nextInt();
         } while (in != 0);
         return;
     }
 
+    /**
+     * Jordan
+     * 
+     * A method 
+     * 
+     * @param n An array list of all the recipes
+     * @param k The scanner being used to obtain information from the user
+     */
     public void groceryList(ArrayList<Recipe> n, Scanner k) {
         System.out.println("Which recipe would you like to obtain a grocery list for?");
         String r = k.nextLine();

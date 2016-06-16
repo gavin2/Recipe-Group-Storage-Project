@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class Main {
 
     /**
-     * Jordan'S To Do List: Editing recipes, Removing steps/ingredients
+     * Jordan'S To Do List: Removing steps/ingredients
      *
      *
      * Gavin: - Ask them what sub category their recipe belongs in before they
@@ -21,9 +21,9 @@ public class Main {
      *
      * DON'T FORGET TO PUT YOUR NAME ON ANYTHING YOU CREATE
      *
-     * Searching for recipes
+     * Searching for recipes based on categories
      *
-     * Generate shopping lists - Recipe scaling
+     * Recipe scaling
      *
      */
     
@@ -37,7 +37,6 @@ public class Main {
     }
 
     /**
-     * Gavin
      *
      * @param k
      * @param a
