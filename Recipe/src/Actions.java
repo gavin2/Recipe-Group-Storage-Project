@@ -1,4 +1,3 @@
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -30,6 +29,11 @@ public class Actions {
         newR.name = k.nextLine(); // Getting the recipe name
         addIngredients(newR, k); // Adding ingredients
         addSteps(newR, k); // Adding the steps to the recipe
+        
+        System.out.print("Total time (h:mn): ");
+        newR.time = k.nextLine().trim();
+        System.out.print("Number of servings");
+        newR.servings = Float.parseFloat(k.nextLine());
 
         return newR;
     }
@@ -110,6 +114,19 @@ public class Actions {
             n.steps.add(step);
         } while (true);
     }
+    
+    /**
+     * Gavin - 
+     * 
+     * @param n
+     * @param recipeList 
+     */
+    public void writer(ArrayList<Recipe> n, File recipeList) {
+        int l = n.size();
+        for (int i = 0; i < l; i++) {
+            writeRecipe(n.get(i), recipeList);
+        }
+    }
 
     /**
      * Gavin - Method used to write the whole recipe to the file.
@@ -119,20 +136,20 @@ public class Actions {
      */
     public void writeRecipe(Recipe n, File recipeList) {
         try { // Try - catch to create the print writer
-            pw = new PrintWriter(new FileWriter(recipeList, true));
+            pw = new PrintWriter(new FileWriter(recipeList, false));
         } catch (IOException ex) {
             System.out.print("Problem creating the print writer.");
             Logger.getLogger(Actions.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        pw.println("\n" + n.name); // Printing the name tp the file
+        pw.println("\n" + n.name); // Printing the name to the file
 
         int size = n.ingredients.size();
         for (int i = 0; i < size; i++) { // For loop going through each ingredient
             pw.println(n.ingredients.get(i).toString()); // Writing ingredient and amount to file
         }
 
-        pw.println(";;"); // Writing the delimiter to the file
+        pw.println(";;\nTime " + n.time + "\n" + n.servings + " Servings"); // Writing the delimiter to the file
 
         size = n.steps.size(); // The number of steps in the recipe
 
@@ -274,7 +291,7 @@ public class Actions {
     }
 
     /**
-     * Jordan
+     * Jordan - is the biggest dick!
      *
      * @param recipeList
      * @param n
@@ -307,26 +324,26 @@ public class Actions {
         }
     }
     /**
-     * Gavin - is a dick
+     * Gavin -
      *
      * @param n
      * @param name
      * @return
      */
-    public Recipe searchRec(ArrayList<Recipe> n, String name) {
+    public int searchRec(ArrayList<Recipe> n, String name) {
         int low = 0, high = n.size(), mid = 0; // Creating required variables
 
         while (low <= high) { // While the lowest position is equal to or less than the highest position
             mid = (low + high) / 2; // Finding the middle position
             if (n.get(mid).name.compareTo(name) == 0) { // Checking if middle term and word are equal
-                return n.get(mid);
+                return mid;
             } else if (n.get(mid).name.compareTo(name) > 0) { // Checking if the word is greater than the middle term using compareTo
                 high = mid - 1; // Calculating new highest term
             } else { // If it does not meet any other requires, the word must be less than the middle term
                 low = mid + 1; // Calculating new lowest term
             }
         }
-        return null;
+        return -1; // When no recipe the same return -1 since it is not an index
     }
 
     /**
@@ -336,21 +353,21 @@ public class Actions {
      * @param name
      * @return
      */
-//    public Ingredient searchIng(ArrayList<Ingredient> n, String name) {
-//        int low = 0, high = n.size(), mid = 0; // Creating required variables
-//
-//        while (low <= high) { // While the lowest position is equal to or less than the highest position
-//            mid = (low + high) / 2; // Finding the middle position
-//            if (n.get(mid).name.compareTo(name) == 0) { // Checking if middle term and word are equal
-//                return n.get(mid);
-//            } else if (n.get(mid).name.compareTo(name) > 0) { // Checking if the word is greater than the middle term using compareTo
-//                high = mid - 1; // Calculating new highest term
-//            } else { // If it does not meet any other requires, the word must be less than the middle term
-//                low = mid + 1; // Calculating new lowest term
-//            }
-//        }
-//        return null;
-//    }
+    public int searchIng(ArrayList<Ingredient> n, String name) {
+        int low = 0, high = n.size(), mid = 0; // Creating required variables
+
+        while (low <= high) { // While the lowest position is equal to or less than the highest position
+            mid = (low + high) / 2; // Finding the middle position
+            if (n.get(mid).getI().compareTo(name) == 0) { // Checking if middle term and word are equal
+                return mid;
+            } else if (n.get(mid).getI().compareTo(name) > 0) { // Checking if the word is greater than the middle term using compareTo
+                high = mid - 1; // Calculating new highest term
+            } else { // If it does not meet any other requires, the word must be less than the middle term
+                low = mid + 1; // Calculating new lowest term
+            }
+        }
+        return -1; // When no ingredient the same return -1 since it is not an index
+    }
 
     /**
      * Gavin -
@@ -359,14 +376,23 @@ public class Actions {
      * @param name
      * @return
      */
-//    public ArrayList<Recipe> searchIngredient(ArrayList<Recipe> n, String name) {
-//        int length = n.size();
-//
-//        for (int i = 0; i < length; i++) {
-//            ArrayList<Ingredient> current = n.get(i).ingredients;
-//            Collections.sort(current);
-//        }
-//
-//    }
+    public ArrayList<Recipe> searchIngredient(ArrayList<Recipe> n, String name) {
+        int length = n.size();
+        ArrayList<Recipe> recWithIng = new ArrayList<Recipe>();
+
+        for (int i = 0; i < length; i++) {
+            ArrayList<Ingredient> current = n.get(i).ingredients;
+            Collections.sort(current);
+            int li = current.size();
+            for (int j = 0; j < li; j++) {
+                if (current.get(j).getI().equals(name)) {
+                    recWithIng.add(n.get(i));
+                    j = li++;
+                }
+            }
+        }
+        
+        return recWithIng;
+    }
 
 }

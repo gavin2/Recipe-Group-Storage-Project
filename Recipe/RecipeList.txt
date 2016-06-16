@@ -1,4 +1,4 @@
-Soft Pretzels
+﻿Soft Pretzels
 4 teaspoons active dry yeast
 1 teaspoons white sugar
 1.25 cups warm water (45 degrees C)
@@ -10,7 +10,8 @@ Soft Pretzels
 4 cups hot water
 .25 cup kosher salt (for topping)
 ;;
-Prep 2h, Cook 10m
+Time 2:10
+12 Servings
 In a small bowl, dissolve yeast and 1 teaspoon sugar in 1 1/4 cup warm water. Let stand until creamy, about 10 minutes.
 In a large bowl, mix together flour, 1/2 cup sugar, and salt. Make a well in the center; add the oil and yeast mixture. Mix and form into a dough. If the mixture is dry, add one or two more tablespoons of water. Knead the dough until smooth, about 7 to 8 minutes. Lightly oil a large bowl, place the dough in the bowl, and turn to coat with oil. Cover with plastic wrap and let rise in a warm place until doubled in size, about 1 hour.
 Preheat oven to 450 degrees F (230 degrees C). Grease 2 baking sheets.
@@ -29,7 +30,8 @@ Ham And Potato Soup
 5 tablespoons butter
 2 cups milk
 ;;
-Prep 20m, Cook 25m
+Time :45
+8 Servings
 Combine the potatoes, celery, onion, ham and water in a stockpot. Bring to a boil, then cook over medium heat until potatoes are tender, about 10 to 15 minutes. Stir in the chicken bouillon, salt and pepper.
 In a separate saucepan, melt butter over medium-low heat. Whisk in flour with a fork, and cook, stirring constantly until thick, about 1 minute. Slowly stir in milk as not to allow lumps to form until all of the milk has been added. Continue stirring over medium-low heat until thick, 4 to 5 minutes.
 Stir the milk mixture into the stockpot, and cook soup until heated through. Serve immediately.
@@ -43,7 +45,8 @@ Spanish Potato Omelet
 2 tomatoes (peeled, seeded, and coarsly chopped)
 2 green onions, chopped
 ;;
-Prep 15m, Cook 45m
+Time 1:00
+6 Servings
 In a large frying pan or skillet, heat olive oil over medium-high heat. Sprinkle potatoes lightly with salt and pepper. Cook until golden brown and crisp.
 Once the potatoes are golden, stir in the onions. Cook, stirring occasionally, until onions soften and begin to brown.
 Meanwhile, beat eggs together with salt and pepper. Pour eggs into pan and stir gently to combine. Reduce heat to low and cook until eggs begin to brown on the bottom.
