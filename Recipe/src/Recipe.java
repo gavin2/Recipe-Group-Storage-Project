@@ -7,6 +7,7 @@ import java.util.ArrayList;
  */
 public class Recipe implements Comparable<Recipe> {
     String name;
+    String catagory;
     float servings;
     String time;
     ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();

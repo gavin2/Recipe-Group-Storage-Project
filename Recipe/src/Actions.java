@@ -36,6 +36,11 @@ public class Actions {
         System.out.print("Number of servings");
         newR.servings = Float.parseFloat(k.nextLine());
 
+        System.out.print("Total time (h:mn): ");
+        newR.time = k.nextLine().trim();
+        System.out.print("Number of servings");
+        newR.servings = Float.parseFloat(k.nextLine());
+
         return newR;
     }
 
@@ -150,7 +155,7 @@ public class Actions {
             pw.println(n.ingredients.get(i).toString()); // Writing ingredient and amount to file
         }
 
-        pw.println(";;\nTime " + n.time + "\n" + n.servings + " Servings"); // Writing the delimiter to the file
+        pw.println(";;\n" + n.servings + " Servings" + "\nTime " + n.time); // Writing the delimiter to the file
 
         size = n.steps.size(); // The number of steps in the recipe
 
@@ -192,14 +197,9 @@ public class Actions {
                     } else {
                         newRec.ingredients.add(new Ingredient(fileRead.next().trim(),
                                 fileRead.nextLine().trim(), Float.parseFloat(temp)));
-                        /**
-                         * Change above needs to be tested Check to see if new
-                         * createIngredient and createStep can be use when
-                         * reading from the file.
-                         */
                     }
                 }
-                temp = fileRead.nextLine().trim();
+                newRec.servings = Float.parseFloat(fileRead.next());
                 while (!temp.equals("--")) {
                     temp = fileRead.nextLine().trim();
                     // add every line to a next step 
@@ -243,6 +243,19 @@ public class Actions {
     }
 
     /**
+     * Carter
+     *
+     *
+     * @param recipe the recipe array list
+     * @param k the scanner to be passed on to this method
+     */
+    public void ingredientScaling(ArrayList<Recipe> recipe, Scanner k) {
+        System.out.println("Current servings: " + recipe.get(0) + "\n how many servings would you like to make? ");
+        int scalingNum = k.nextInt();
+
+    }
+
+    /**
      * Jordan
      *
      * @param k
@@ -274,6 +287,7 @@ public class Actions {
             default:
                 break;
         }
+
     }
 
     /**
@@ -327,15 +341,6 @@ public class Actions {
         return;
     }
 
-    /**
-     * Jordan
-     * 
-     * A method to create a grocery list (print the ingredients and their measurements) for a specific recipe
-     * The servings of the recipe can also be chosen here which will affect how much of each ingredient you need
-     * 
-     * @param n Array list of all the recipes
-     * @param k What is being entered by the user
-     */
     public void groceryList(ArrayList<Recipe> n, Scanner k) {
         System.out.println("Which recipe would you like to obtain a grocery list for?");
         String r = k.nextLine();
@@ -416,8 +421,6 @@ public class Actions {
                 }
             }
         }
-
         return recWithIng;
     }
-
 }
