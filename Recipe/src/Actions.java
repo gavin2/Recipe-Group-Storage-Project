@@ -190,6 +190,7 @@ public class Actions {
 
                 // the first line is always the name
                 newRec.name = fileRead.nextLine();
+                newRec.catagory = fileRead.nextLine();
                 String temp = "";
                 while (!temp.equals(";;")) {
                     temp = fileRead.next().trim();
