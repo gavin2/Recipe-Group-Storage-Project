@@ -45,7 +45,6 @@ public class Main {
     public static void getInput(Scanner k, Actions a) {
         File recipeList = new File("RecipeList.txt");
         ArrayList<Recipe> allRecipes = a.readRecipe(recipeList); // ArrayList to store all of the recipes, from file
-        Collections.sort(allRecipes);
 
         System.out.println("Add a\nEdit recipe c\nSearch s\nSort with category f\nExit e");
         char action = k.nextLine().charAt(0);
@@ -62,6 +61,7 @@ public class Main {
                     break;
                 case 'c':
                     a.editRecipe(allRecipes, k);
+                    Collections.sort(allRecipes);
                     break;
                 case 'e':
                     a.writer(allRecipes, recipeList);
@@ -71,7 +71,7 @@ public class Main {
                     break;
                 case 's':
                     System.out.print("Name of recipe: ");
-                    String name = k.nextLine();
+                    String name = k.nextLine().trim();
                     a.searchRec(allRecipes, name);
                     break;
                 case 'q':
@@ -80,7 +80,7 @@ public class Main {
                     break;
             }
 
-            System.out.println("Add a\nRead in recipes b\nEdit recipe c\nSearch s");
+            System.out.println("dd a\nEdit recipe c\nSearch s\nSort with category f\nExit e");
             action = k.nextLine().charAt(0);
         }
 

@@ -190,7 +190,7 @@ public class Actions {
 
                 // the first line is always the name
                 newRec.name = fileRead.nextLine();
-                newRec.catagory = fileRead.nextLine();
+                newRec.category = fileRead.nextLine();
                 String temp = "";
                 while (!temp.equals(";;")) {
                     temp = fileRead.next().trim();
@@ -215,6 +215,7 @@ public class Actions {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Actions.class.getName()).log(Level.SEVERE, null, ex);
         }
+        Collections.sort(allRecipes);
         return allRecipes;
     }
 
@@ -362,16 +363,10 @@ public class Actions {
      * @return
      */
     public int searchRec(ArrayList<Recipe> n, String name) {
-        int low = 0, high = n.size(), mid = 0; // Creating required variables
-
-        while (low <= high) { // While the lowest position is equal to or less than the highest position
-            mid = (low + high) / 2; // Finding the middle position
-            if (n.get(mid).name.compareTo(name) == 0) { // Checking if middle term and word are equal
-                return mid;
-            } else if (n.get(mid).name.compareTo(name) > 0) { // Checking if the word is greater than the middle term using compareTo
-                high = mid - 1; // Calculating new highest term
-            } else { // If it does not meet any other requires, the word must be less than the middle term
-                low = mid + 1; // Calculating new lowest term
+        int length = n.size();
+        for (int i = 0; i < length; i++) {
+            if (n.get(i).name.equals(name)) {
+                return i;
             }
         }
         return -1; // When no recipe the same return -1 since it is not an index
@@ -385,18 +380,14 @@ public class Actions {
      * @return
      */
     public int searchIng(ArrayList<Ingredient> n, String name) {
-        int low = 0, high = n.size(), mid = 0; // Creating required variables
-
-        while (low <= high) { // While the lowest position is equal to or less than the highest position
-            mid = (low + high) / 2; // Finding the middle position
-            if (n.get(mid).getI().compareTo(name) == 0) { // Checking if middle term and word are equal
-                return mid;
-            } else if (n.get(mid).getI().compareTo(name) > 0) { // Checking if the word is greater than the middle term using compareTo
-                high = mid - 1; // Calculating new highest term
-            } else { // If it does not meet any other requires, the word must be less than the middle term
-                low = mid + 1; // Calculating new lowest term
+        int length = n.size();
+        
+        for (int i = 0; i < length; i++) {
+            if (n.get(i).getI().equals(name)) {
+                return i;
             }
         }
+        
         return -1; // When no ingredient the same return -1 since it is not an index
     }
 
