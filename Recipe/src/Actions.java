@@ -281,18 +281,16 @@ public class Actions {
      * @param l An array list of all the recipes
      * @param k The scanner being used to obtain information from the user
      */
-    public void editRecipe(ArrayList<Recipe> l, Scanner k) {
+    public Recipe editRecipe(ArrayList<Recipe> l, String n, Scanner k) {
         int a;
         Recipe h = null;
-        System.out.print("What recipe would you like to edit? ");
-        String n = k.nextLine(); // Accepting the name of the recipe from the user
         a = searchRec(l, n); // Finding the recipe in the array list
         if (a != -1) {
             h = l.get(a); // Getting the recipe from the array list
         } else { // If there is a problem finding the recipe
             System.out.println("There was a problem finding that recipe. "
                     + "You will now be returned to the main menu.");
-            return; // Returns to the main menu 
+            return  null; // Returns to the main menu 
         }
         System.out.println("What would you like to do?\n a- edit steps\n "
                 + "b- edit ingredients\n c- remove steps\n d- remove ingredients\n e- return to the main menu"); // Obtains their choice in order to call the required method
@@ -313,10 +311,11 @@ public class Actions {
                 removeRecipeIngredients(h, k); // Calls method to remove ingredients
                 break;
             case "e":
-                return; // Returns to the main menu
+                return null; // Returns to the main menu
             default:
                 break;
         }
+        return h;
     }
 
     /**
@@ -330,9 +329,9 @@ public class Actions {
     public void editRecipeSteps(Recipe n, Scanner k) {
         String step;
         System.out.print("Which step would you like to edit? Enter 0 to finish editing. "); // Asks the user for input
-        int in = k.nextInt(); // Obtains the index of the step from the user
+        int in = Integer.parseInt(k.nextLine()); // Obtains the index of the step from the user
         do { // Does this while the user doesn't want to exit
-            if (in > n.steps.size()) { // When the step is outside the list of steps
+            if (in >= n.steps.size()) { // When the step is outside the list of steps
                 addSteps(n, k); // Calls method to add a new step
             } else if (in < n.steps.size()) { // If the step is inside the list of steps
                 System.out.println("This is the orginal step\n" + n.steps.get(in).getStep()
@@ -452,7 +451,7 @@ public class Actions {
      */
     public void groceryList(ArrayList<Recipe> n, Scanner k) {
         System.out.println("Which recipe would you like to obtain a grocery list for?");
-        String r = k.nextLine().toLowerCase();
+        String r = k.nextLine(); // Obtains input from the user
         Recipe h = n.get(searchRec(n, r));
         ingredientScaling(n, k);
         for (int b = 0; b < h.ingredients.size(); b++) {
