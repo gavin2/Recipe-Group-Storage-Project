@@ -4,6 +4,8 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -145,6 +147,7 @@ public class Actions {
      *
      * @param n The recipe being used
      * @param recipeList The file holding all the recipes
+     * @param time The number of times that the method has been called
      */
     public void writeRecipe(Recipe n, File recipeList, int time) {
         try { // Try - catch to create the print writer
@@ -200,14 +203,16 @@ public class Actions {
                 Recipe newRec = new Recipe();
                 //every run of the for loop is a new recipe
 
-                // the first line is always the name
+                // the first line is always the name, followed by category
                 newRec.name = fileRead.nextLine();
                 newRec.category = fileRead.nextLine();
                 String temp = "";
+                // the ingredients and steps are separated by two semicolons
                 while (!temp.equals(";;")) {
                     temp = fileRead.next().trim();
                     if (temp.equals(";;")) {
                     } else {
+                        // add the next ingredient, amount, and unit 
                         newRec.ingredients.add(new Ingredient(fileRead.next().trim(),
                                 fileRead.nextLine().trim(), Float.parseFloat(temp)));
                     }
@@ -216,6 +221,7 @@ public class Actions {
                 fileRead.nextLine();
                 fileRead.next();
                 newRec.time = fileRead.nextLine().trim();
+                // recipes are separated by two hyphens
                 while (!temp.equals("--")) {
                     temp = fileRead.nextLine().trim();
                     // add every line to a next step 
@@ -224,12 +230,14 @@ public class Actions {
                         newRec.steps.add(new Step(temp));
                     }
                 }
+                // add the recipes to the list
                 allRecipes.add(newRec);
                 // the end of the for loop indicated the file has no more recipes
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Actions.class.getName()).log(Level.SEVERE, null, ex);
         }
+        // sort the file of recipes
         Collections.sort(allRecipes);
         return allRecipes;
     }
@@ -244,9 +252,11 @@ public class Actions {
      * (recipes are separated by two hyphens "--") "-1" means there is an error.
      */
     public int fileLength(Scanner fileRead, File file) {
-        //get the length of the file (each string)
+        //get the length of the file (each line)
         int theCount = 0;
         try {
+
+            // each recipe is separated by two hyphens
             fileRead = new Scanner(file).useDelimiter("--");
             while (fileRead.hasNext()) {
                 fileRead.next();
@@ -267,8 +277,26 @@ public class Actions {
      * @param k the scanner to be passed on to this method
      */
     public void ingredientScaling(ArrayList<Recipe> recipe, Scanner k) {
-        System.out.println("Current servings: " + recipe.get(0) + "\n how many servings would you like to make? ");
-        int scalingNum = k.nextInt();
+        DecimalFormat df = new DecimalFormat("#.##");
+        df.setRoundingMode(RoundingMode.CEILING);
+        // ask the user what recipe thy want to scale for
+        System.out.println("What recipe do you want to scale?");
+        String recForScaling = k.nextLine();
+        // seach for the recipe and get its index in the array list
+        int recIndex = searchRec(recipe, recForScaling);
+        System.out.println("Current servings: " + recipe.get(recIndex).servings + " how many servings would you like to make? ");
+        // ask the user for their desired amount of scaling for servings
+        int recScaling = Integer.parseInt(k.nextLine());
+        System.out.println("For " + recScaling + " servings of " + recipe.get(recIndex).name + " you will need");
+        // for each ingredient for the recipe, print out the updated amount and ingredient
+        for (int i = 0; i < recipe.get(recIndex).ingredients.size(); i++) {
+            // calculate the scaled amount
+            Float scaledAmount = ((recipe.get(recIndex).ingredients.get(i).getA()) * recScaling);
+            // round out the extreme decimal point
+            System.out.print(df.format(scaledAmount));
+            // print out the unit and name of the ingredient
+            System.out.println(" " + recipe.get(recIndex).ingredients.get(i).getU().toString() + " " + recipe.get(recIndex).ingredients.get(i).getI().toString());
+        }
 
     }
 
@@ -290,7 +318,7 @@ public class Actions {
         } else { // If there is a problem finding the recipe
             System.out.println("There was a problem finding that recipe. "
                     + "You will now be returned to the main menu.");
-            return  null; // Returns to the main menu 
+            return null; // Returns to the main menu 
         }
         System.out.println("What would you like to do?\n a- edit steps\n "
                 + "b- edit ingredients\n c- remove steps\n d- remove ingredients\n e- return to the main menu"); // Obtains their choice in order to call the required method
