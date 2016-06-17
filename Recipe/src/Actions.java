@@ -351,7 +351,7 @@ public class Actions {
                 }
             }
             System.out.print("If you would like to edit another step, which one? Enter 0 to finish editing. ");
-            in = k.nextInt();
+            in = Integer.parseInt(k.nextLine());
         } while (in != 0);
         return;
     }
@@ -367,16 +367,17 @@ public class Actions {
         System.out.print("Which ingredient would you like to edit? Please enter the index of it. Enter 0 to finish editing. ");
         int in = Integer.parseInt(k.nextLine());
         do {
-            if (in > n.ingredients.size()) {
+            if (in >= n.ingredients.size()) {
                 addIngredients(n, k);
             } else if (in < n.ingredients.size()) {
                 System.out.println("This is the original ingredient\n" + n.ingredients.get(in));
                 Ingredient i = createIngredient(k);
+                n.ingredients.remove(in);
                 n.ingredients.add(in, i);
                 System.out.println("This is the new ingredient\n" + n.ingredients.get(in));
             }
             System.out.print("If you would like to edit another ingredient, which one? Enter 0 to finish editing. ");
-            in = k.nextInt();
+            in = Integer.parseInt(k.nextLine());
         } while (in != 0);
         return;
     }
@@ -390,24 +391,30 @@ public class Actions {
     public void removeRecipeSteps(Recipe n, Scanner k) {
         String step;
         System.out.print("Which step would you like to remove? Enter 0 to finish removing. ");
-        int in = k.nextInt();
+        int in = Integer.parseInt(k.nextLine());
+        in = in - 1;
         do {
             if (in < n.steps.size()) {
-                System.out.print("Are you sure you want to remove: " + n.steps.get(in) + " from the steps?\n 1- yes\n 2- no\n");
-                int answer = k.nextInt();
+                System.out.print("Are you sure you want to remove: " + n.steps.get(in).getStep() + " from the steps?\n 1- yes\n 2- no\n");
+                int answer = Integer.parseInt(k.nextLine());
                 if (answer == 1) {
-                    System.out.println("You have removed " + n.steps.get(in) + " from the steps.");
+                    System.out.println("You have removed " + n.steps.get(in).getStep() + " from the steps.");
                     n.steps.remove(in);
                 } else if (answer == 2) {
                     System.out.println("You will now be returned to the main menu.");
                     return;
                 }
             } else {
-                System.out.println("There was a problem finding that ingredient. ");
+                System.out.println("There was a problem finding that step. ");
             }
-            System.out.print("If you would like to remove another step, which one? Enter 0 to finidh removing. ");
-            in = k.nextInt();
+            System.out.print("If you would like to remove another step, which one? Enter 0 to finish removing. ");
+            in = Integer.parseInt(k.nextLine());
+            if(in == 0){
+                return;
+            }
+            in = in - 1;
         } while (in != 0);
+        return;
     }
 
     /**
@@ -419,12 +426,12 @@ public class Actions {
     public void removeRecipeIngredients(Recipe n, Scanner k) {
         String ingredient;
         System.out.print("Which igredient would you like to remove? Please enter the index of it. Enter 0 to finish removing. ");
-        int in = k.nextInt(); // Obtaining the index of the ingredient to be removed
+        int in = Integer.parseInt(k.nextLine()); // Obtaining the index of the ingredient to be removed
         do { // Does this while the user doesn't want to exit
             if (in < n.ingredients.size()) { // If the ingredient is in the ingredient list
                 System.out.print("Are you sure you want to remove: " + n.ingredients.get(in)
                         + " from the ingredient list?\n 1- yes\n 2- no\n"); // Asks the user if they would like to remove the specific ingredient
-                int answer = k.nextInt(); // Obtains the user's answer
+                int answer = Integer.parseInt(k.nextLine()); // Obtains the user's answer
                 if (answer == 1) { // When the user wants to remove the ingredient
                     System.out.println("You have removed: " + n.ingredients.get(in) + " from the ingredient list.");
                     n.ingredients.remove(in); // Removes the ingredient from the list
@@ -436,7 +443,7 @@ public class Actions {
                 System.out.println("There was a problem finding that ingredient. ");
             }
             System.out.print("If you would like to remove another ingredient, which one? Enter 0 to finish removing. "); // Asks the user if they would like to edit another ingredient
-            in = k.nextInt(); // Obtains the choice/ingredient from the user
+            in = Integer.parseInt(k.nextLine()); // Obtains the choice/ingredient from the user
         } while (in != 0);
         return; // Returns to the main menu
     }

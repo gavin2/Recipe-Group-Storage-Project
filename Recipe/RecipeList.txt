@@ -1,49 +1,50 @@
-Ham and Potato Soup
-Soup
-3.5 cups peeled and diced potato
-.33 cups diced celery
-.33 cups finely chopped onion
-.75 cups diced cooked ham
-3.25 cups water
-2 tablespoons chicken bouillon granules
-.5 teaspoons salt
-1 teaspoon ground white or black pepper (or to taste preference)
-5 tablespoons butter
-2 cups milk
+Chocolate Berry Explosion
+Desert
+2.0 cups fresh or frozen raspberries
+0.25 cup icing sugar
+1.0 tbsp (15 mL) lemon juice
+1.0 cup chocolate cake
+3.0 cups mixed fresh berries (raspberries, blackberries, blueberries and/or sliced strawberries)
+3.0 cups peanut butter
 ;;
-8 Servings
-Time 0:45
-Combine the potatoes, celery, onion, ham and water in a stockpot. Bring to a boil, then cook over medium heat until potatoes are tender, about 10 to 15 minutes. Stir in the chicken bouillon, salt and pepper.
-In a separate saucepan, melt butter over medium-low heat. Whisk in flour with a fork, and cook, stirring constantly until thick, about 1 minute. Slowly stir in milk as not to allow lumps to form until all of the milk has been added. Continue stirring over medium-low heat until thick, 4 to 5 minutes.
-Stir the milk mixture into the stockpot, and cook soup until heated through. Serve immediately.
+8.0 Servings
+Time 0:10
+Purée raspberries, sugar and lemon juice in blender until smooth. Strain.
+Top the chocolate cake with raspberry sauce and berries.
 --
 Spanish Potato Omelet
 entree
-.5 cup olive oil
-.5 pound potatoes, thinly sliced
-1 teaspoon of salt and pepper (or to personal taste)
-1 large onion, thinly sliced
-4 eggs
-2 tomatoes (peeled, seeded, and coarsly chopped)
-2 green onions, chopped
+0.5 cup olive oil
+0.5 pound potatoes, thinly sliced
+1.0 teaspoon of salt and pepper (or to personal taste)
+1.0 large onion, thinly sliced
+4.0 eggs 
+2.0 tomatoes (peeled, seeded, and coarsly chopped)
+2.0 green onions, chopped
 ;;
-6 Servings
+6.0 Servings
 Time 1:00
 In a large frying pan or skillet, heat olive oil over medium-high heat. Sprinkle potatoes lightly with salt and pepper. Cook until golden brown and crisp.
 Once the potatoes are golden, stir in the onions. Cook, stirring occasionally, until onions soften and begin to brown.
 Meanwhile, beat eggs together with salt and pepper. Pour eggs into pan and stir gently to combine. Reduce heat to low and cook until eggs begin to brown on the bottom.
 Loosen bottom of omelet with a spatula, invert a large plate over the pan, and carefully turn the omelet out onto it. Slide the omelet back into the pan with the uncooked side down. Cook until eggs are set. Garnish omelet with tomato and green onion and serve warm.
 --
-Chocolate Berry Explosion
-Desert
-2 cups  fresh or frozen raspberries
-.25 cup icing sugar
-1 tbsp (15 mL) lemon juice
-1 cup chocolate cake
-3 cups mixed fresh berries (raspberries, blackberries, blueberries and/or sliced strawberries)
+﻿Ham and Potato Soup
+Soup
+3.5 cups peeled and diced potato
+0.33 cups diced celery
+0.33 cups finely chopped onion
+0.75 cups diced cooked ham
+3.25 cups water
+2.0 tablespoons chicken bouillon granules
+0.5 teaspoons salt
+1.0 teaspoon ground white or black pepper (or to taste preference)
+5.0 tablespoons butter
+2.0 cups milk
 ;;
-8 Servings
-Time 0:10
-Purée raspberries, sugar and lemon juice in blender until smooth; strain.
-Top the chocolate cake with raspberry sauce and berries.
+8.0 Servings
+Time 0:45
+Combine the potatoes, celery, onion, ham and water in a stockpot. Bring to a boil, then cook over medium heat until potatoes are tender, about 10 to 15 minutes. Stir in the chicken bouillon, salt and pepper.
+In a separate saucepan, melt butter over medium-low heat. Whisk in flour with a fork, and cook, stirring constantly until thick, about 1 minute. Slowly stir in milk as not to allow lumps to form until all of the milk has been added. Continue stirring over medium-low heat until thick, 4 to 5 minutes.
+Stir the milk mixture into the stockpot, and cook soup until heated through. Serve immediately.
 --
