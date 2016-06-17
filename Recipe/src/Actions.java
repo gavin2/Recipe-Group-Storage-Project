@@ -36,7 +36,7 @@ public class Actions {
 
         System.out.print("Total time (h:mn): ");
         newR.time = k.nextLine().trim(); // Getting the total amount of time to make the recipe
-        System.out.print("Number of servings");
+        System.out.print("Number of servings: ");
         newR.servings = Float.parseFloat(k.nextLine()); // Getting the number of servings that recipe makes
 
         return newR;
@@ -120,7 +120,7 @@ public class Actions {
     }
 
     /**
-     * Gavin - Method used to write every recipe stored in an ArrayList to the 
+     * Gavin - Method used to write every recipe stored in an ArrayList to the
      * text file
      *
      * @param n The ArrayList of recipes that need to be written to the file
@@ -128,8 +128,15 @@ public class Actions {
      */
     public void writer(ArrayList<Recipe> n, File recipeList) {
         int l = n.size(); // Getting the length of the ArrayList
+        try { // Try - catch to create the print writer
+            PrintWriter writer = new PrintWriter(new FileWriter(recipeList, false));
+            writer.close();
+        } catch (IOException ex) {
+            System.out.print("Problem creating the print writer.");
+            Logger.getLogger(Actions.class.getName()).log(Level.SEVERE, null, ex);
+        }
         for (int i = 0; i < l; i++) {
-            writeRecipe(n.get(i), recipeList); // Calling method to write everything to the file
+            writeRecipe(n.get(i), recipeList, i); // Calling method to write everything to the file
         }
     }
 
@@ -139,29 +146,35 @@ public class Actions {
      * @param n The recipe being used
      * @param recipeList The file holding all the recipes
      */
-    public void writeRecipe(Recipe n, File recipeList) {
+    public void writeRecipe(Recipe n, File recipeList, int time) {
         try { // Try - catch to create the print writer
-            pw = new PrintWriter(new FileWriter(recipeList, false));
+            pw = new PrintWriter(new FileWriter(recipeList, true));
         } catch (IOException ex) {
             System.out.print("Problem creating the print writer.");
             Logger.getLogger(Actions.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        pw.println("\n" + n.name + "\n" + n.category); // Printing the name to the file
+        if (time > 0) {
+            pw.println("");
+        }
+        pw.println(n.name); // Printing the name to the file
+        pw.println(n.category);
 
         int size = n.ingredients.size(); // Getting the size of the ingredients ArrayList
         for (int i = 0; i < size; i++) { // For loop going through each ingredient
             pw.println(n.ingredients.get(i).toString()); // Writing ingredient and amount to file
         }
 
-        pw.println(";;\n" + n.servings + " Servings" + "\nTime " + n.time); // Writing the delimiter, servings, and time to the file
+        pw.println(";;"); // Writing the delimiter
+        pw.println(n.servings + " Servings");
+        pw.println("Time " + n.time);
 
         size = n.steps.size(); // The number of steps in the recipe
 
         for (int i = 0; i < size; i++) {
             pw.println(n.steps.get(i).getStep()); // Printing the step to the file
         }
-        pw.println("--"); // Writing delimiter between recipes to file
+        pw.print("--"); // Writing delimiter between recipes to file
 
         pw.close(); // Closing the print writer
     }
@@ -437,7 +450,7 @@ public class Actions {
     public int searchRec(ArrayList<Recipe> n, String name) {
         int length = n.size(); // Getting the length of the ArrayList
         name = name.toLowerCase(); // Setting all the letters in the name to lower case
-        
+
         for (int i = 0; i < length; i++) {
             if (n.get(i).name.toLowerCase().trim().equals(name.trim())) { // Settin the name in the ArrayList to lower case to compare to the name given by user
                 return i; // If they match return the index
@@ -447,7 +460,8 @@ public class Actions {
     }
 
     /**
-     * Gavin - Method used to search for an ingredient in an ArrayList of ingredients
+     * Gavin - Method used to search for an ingredient in an ArrayList of
+     * ingredients
      *
      * @param n The ArrayList of ingredients being passed in
      * @param name The name of ingredient that the user is searching for
@@ -456,7 +470,7 @@ public class Actions {
     public int searchIng(ArrayList<Ingredient> n, String name) {
         int length = n.size(); // Getting the length of the ArrayList
         name = name.toLowerCase(); // Setting the name ot lower case
-        
+
         for (int i = 0; i < length; i++) {
             if (n.get(i).getI().toLowerCase().equals(name)) { // Checking if the ingredients name set to lower case matches the search key
                 return i; // If they match return the index
@@ -467,7 +481,8 @@ public class Actions {
     }
 
     /**
-     * Gavin - Method used to search through all of the recipes for an ingredient
+     * Gavin - Method used to search through all of the recipes for an
+     * ingredient
      *
      * @param n The ArrayList of recipes to be searched through
      * @param name The key that the user is searching for
@@ -491,33 +506,33 @@ public class Actions {
         }
         return recWithIng; // Returning the ArrayList of recipes
     }
-    
+
     /**
-     * Gavin - Method used to search through the recipes based on a category entered
-     * by the user.
-     * 
+     * Gavin - Method used to search through the recipes based on a category
+     * entered by the user.
+     *
      * @param n The ArrayList to search through
      * @param cat The category to be searched for
-     * @return  Returns an ArrayList of recipes that are in that category
+     * @return Returns an ArrayList of recipes that are in that category
      */
     public ArrayList<Recipe> searchCategory(ArrayList<Recipe> n, String cat) {
         int length = n.size(); // Getting the length of the ArrayList
         Collections.sort(n, Recipe.CategoryComparator); // Sorting the ArrayList based of category using Comparator
         ArrayList<Recipe> recFromCat = new ArrayList<Recipe>(); // Creating new ArrayList to store recieps
         cat = cat.toLowerCase(); // Setting the category to lower case
-        
+
         for (int i = 0; i < length; i++) {
             if (n.get(i).category.toLowerCase().equals(cat.toLowerCase())) { // Comparing the category given to recipe in lower case to the search key
                 recFromCat.add(n.get(i)); // Adding the recipe to the ArrayList
             }
         }
-        
+
         return recFromCat; // Returning the ArrayList
     }
-    
+
     public void printingStuff(ArrayList<Recipe> n) {
         String temp = n.get(2).name.toLowerCase().trim();
-        
+
         System.out.println(temp + " " + temp.compareTo("soft pretzels"));
     }
 }

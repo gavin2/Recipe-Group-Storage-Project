@@ -39,7 +39,7 @@ public class Main {
         File recipeList = new File("RecipeList.txt");
         ArrayList<Recipe> allRecipes = a.readRecipe(recipeList); // ArrayList to store all of the recipes, from file
 
-        System.out.println("Add a\nEdit recipe c\nSearch s\nSort with category f\nExit e");
+        System.out.println("Add a\nEdit recipe c\nSearch s\nSort with category f\nSearching every recipe for an ingredient h\nExit e");
         String action = k.nextLine().toLowerCase();
 
         while (!action.equals("-")) {
@@ -71,11 +71,17 @@ public class Main {
                     break;
                 case "q":
                     a.ingredientScaling(allRecipes, k);
+                    break;
+                case "h":
+                    System.out.print("Ingredient: ");
+                    String test = k.nextLine();
+                    ArrayList<Recipe> withIng = a.searchIngredient(allRecipes, test);
+                    break;
                 default:
                     break;
             }
 
-            System.out.println("Add a\nEdit recipe c\nSearch s\nSort with category f\nExit e");
+            System.out.println("\nAdd a\nEdit recipe c\nSearch s\nSort with category f\nExit e");
             action = k.nextLine();
         }
 
