@@ -51,13 +51,13 @@ public class Actions {
     public void addIngredients(Recipe n, Scanner k) {
         System.out.println("Enter % as a new ingredient to end list.");
         do {
-            Ingredient l = createIngredient(k);
+            Ingredient l = createIngredient(k); // Calling method to create an ingredient
             if (l == null) {
-                return;
+                return; // When no ingredient to add return
             }
-            n.ingredients.add(l);
+            n.ingredients.add(l); // Add the ingredients to the ArrayList
 
-        } while (true);
+        } while (true); // Continue until the user tells it to stop
     }
 
     /**
@@ -68,16 +68,16 @@ public class Actions {
      */
     public Ingredient createIngredient(Scanner k) {
         System.out.print("Enter ingredient name: ");
-        String n = k.nextLine().trim();
+        String n = k.nextLine().trim(); // Getting the name of the ingredient
         if (n.equals("%")) {
-            return null;
+            return null; // Return nothing when the user enters '%'
         }
         System.out.print("Enter unit of measurement: ");
-        String u = k.nextLine().trim();
+        String u = k.nextLine().trim(); // Getting the units to measure the ingredients
         System.out.print("Amount: ");
-        float a = Float.parseFloat(k.nextLine());
+        float a = Float.parseFloat(k.nextLine()); // Getting the amount of the ingredient
 
-        return new Ingredient(u, n, a);
+        return new Ingredient(u, n, a); // Return the new ingredient
     }
 
     /**
@@ -88,7 +88,7 @@ public class Actions {
      */
     public Step createStep(Scanner k) {
         System.out.print("Enter step to be add: ");
-        String temp = k.nextLine().trim();
+        String temp = k.nextLine().trim(); // Getting the step
 
         if (temp.equals("%")) {
             return null; // When no more steps return
@@ -96,7 +96,7 @@ public class Actions {
 
         Step s = new Step(temp); // Getting the step to be entered
 
-        return s;
+        return s; // Returning the new step
     }
 
     /**
@@ -109,26 +109,27 @@ public class Actions {
         Step step;
         System.out.println("Enter % as a new step to end list.");
         do {
-            step = createStep(k);
+            step = createStep(k); // Calling method t create a new step
 
             if (step == null) {
-                return;
+                return; // When there is no more steps to be added just return
             }
 
-            n.steps.add(step);
+            n.steps.add(step); // Adding the new step to the ArraylList
         } while (true);
     }
 
     /**
-     * Gavin -
+     * Gavin - Method used to write every recipe stored in an ArrayList to the 
+     * text file
      *
-     * @param n
-     * @param recipeList
+     * @param n The ArrayList of recipes that need to be written to the file
+     * @param recipeList The file that the recipes need to be written to
      */
     public void writer(ArrayList<Recipe> n, File recipeList) {
-        int l = n.size();
+        int l = n.size(); // Getting the length of the ArrayList
         for (int i = 0; i < l; i++) {
-            writeRecipe(n.get(i), recipeList);
+            writeRecipe(n.get(i), recipeList); // Calling method to write everything to the file
         }
     }
 
@@ -148,21 +149,21 @@ public class Actions {
 
         pw.println("\n" + n.name + "\n" + n.category); // Printing the name to the file
 
-        int size = n.ingredients.size();
+        int size = n.ingredients.size(); // Getting the size of the ingredients ArrayList
         for (int i = 0; i < size; i++) { // For loop going through each ingredient
             pw.println(n.ingredients.get(i).toString()); // Writing ingredient and amount to file
         }
 
-        pw.println(";;\n" + n.servings + " Servings" + "\nTime " + n.time); // Writing the delimiter to the file
+        pw.println(";;\n" + n.servings + " Servings" + "\nTime " + n.time); // Writing the delimiter, servings, and time to the file
 
         size = n.steps.size(); // The number of steps in the recipe
 
         for (int i = 0; i < size; i++) {
             pw.println(n.steps.get(i).getStep()); // Printing the step to the file
         }
-        pw.println("--");
+        pw.println("--"); // Writing delimiter between recipes to file
 
-        pw.close();
+        pw.close(); // Closing the print writer
     }
 
     /**
@@ -380,38 +381,38 @@ public class Actions {
     }
 
     /**
-     * Gavin -
+     * Gavin - Method used to search for a recipe by name.
      *
-     * @param n
-     * @param name
-     * @return
+     * @param n The ArrayList of recipes to be searched through
+     * @param name The name of the recipe the user is searching for
+     * @return Returns the index of the recipe in the ArrayList
      */
     public int searchRec(ArrayList<Recipe> n, String name) {
-        int length = n.size();
-        name = name.toLowerCase();
+        int length = n.size(); // Getting the length of the ArrayList
+        name = name.toLowerCase(); // Setting all the letters in the name to lower case
         
         for (int i = 0; i < length; i++) {
-            if (n.get(i).name.toLowerCase().equals(name)) {
-                return i;
+            if (n.get(i).name.toLowerCase().equals(name)) { // Settin the name in the ArrayList to lower case to compare to the name given by user
+                return i; // If they match return the index
             }
         }
         return -1; // When no recipe the same return -1 since it is not an index
     }
 
     /**
-     * Gavin -
+     * Gavin - Method used to search for an ingredient in an ArrayList of ingredients
      *
-     * @param n
-     * @param name
-     * @return
+     * @param n The ArrayList of ingredients being passed in
+     * @param name The name of ingredient that the user is searching for
+     * @return Returns the index of the ingredient
      */
     public int searchIng(ArrayList<Ingredient> n, String name) {
-        int length = n.size();
-        name = name.toLowerCase();
+        int length = n.size(); // Getting the length of the ArrayList
+        name = name.toLowerCase(); // Setting the name ot lower case
         
         for (int i = 0; i < length; i++) {
-            if (n.get(i).getI().toLowerCase().equals(name)) {
-                return i;
+            if (n.get(i).getI().toLowerCase().equals(name)) { // Checking if the ingredients name set to lower case matches the search key
+                return i; // If they match return the index
             }
         }
         
@@ -419,43 +420,51 @@ public class Actions {
     }
 
     /**
-     * Gavin -
+     * Gavin - Method used to search through all of the recipes for an ingredient
      *
-     * @param n
-     * @param name
-     * @return
+     * @param n The ArrayList of recipes to be searched through
+     * @param name The key that the user is searching for
+     * @return Returns an ArrayList of recipes that contain that ingredient
      */
     public ArrayList<Recipe> searchIngredient(ArrayList<Recipe> n, String name) {
-        int length = n.size();
-        ArrayList<Recipe> recWithIng = new ArrayList<Recipe>();
-        name = name.toLowerCase();
+        int length = n.size(); // Getting the size of the ArrayList
+        ArrayList<Recipe> recWithIng = new ArrayList<Recipe>(); // Creating new ArrayList
+        name = name.toLowerCase(); // Setting the nsearch key to lower case
 
         for (int i = 0; i < length; i++) {
-            ArrayList<Ingredient> current = n.get(i).ingredients;
-            Collections.sort(current);
-            int li = current.size();
+            ArrayList<Ingredient> current = n.get(i).ingredients; // Getting the ArrayList of ingredients from the current recipe
+            Collections.sort(current); // Sorting the ingredients using compareTo
+            int li = current.size(); // Getting the number of ingredients in the ArrayList
             for (int j = 0; j < li; j++) {
-                if (current.get(j).getI().toLowerCase().equals(name)) {
-                    recWithIng.add(n.get(i));
-                    j = li++;
+                if (current.get(j).getI().toLowerCase().equals(name)) { // Comparing lower case ingredient with search key
+                    recWithIng.add(n.get(i)); // Adding the ingredient to the ArrayList
+                    j = li++; // Setting j to above the length to exit the for loop
                 }
             }
         }
-        return recWithIng;
+        return recWithIng; // Returning the ArrayList of recipes
     }
     
+    /**
+     * Gavin - Method used to search through the recipes based on a category entered
+     * by the user.
+     * 
+     * @param n The ArrayList to search through
+     * @param cat The category to be searched for
+     * @return  Returns an ArrayList of recipes that are in that category
+     */
     public ArrayList<Recipe> searchCategory(ArrayList<Recipe> n, String cat) {
-        int length = n.size();
-        Collections.sort(n, Recipe.CategoryComparator);
-        ArrayList<Recipe> recFromCat = new ArrayList<Recipe>();
-        cat = cat.toLowerCase();
+        int length = n.size(); // Getting the length of the ArrayList
+        Collections.sort(n, Recipe.CategoryComparator); // Sorting the ArrayList based of category using Comparator
+        ArrayList<Recipe> recFromCat = new ArrayList<Recipe>(); // Creating new ArrayList to store recieps
+        cat = cat.toLowerCase(); // Setting the category to lower case
         
         for (int i = 0; i < length; i++) {
-            if (n.get(i).category.toLowerCase().equals(cat.toLowerCase())) {
-                recFromCat.add(n.get(i));
+            if (n.get(i).category.toLowerCase().equals(cat.toLowerCase())) { // Comparing the category given to recipe in lower case to the search key
+                recFromCat.add(n.get(i)); // Adding the recipe to the ArrayList
             }
         }
         
-        return recFromCat;
+        return recFromCat; // Returning the ArrayList
     }
 }
