@@ -79,7 +79,7 @@ public class Main {
                     break;
             }
 
-            System.out.println("dd a\nEdit recipe c\nSearch s\nSort with category f\nExit e");
+            System.out.println("Add a\nEdit recipe c\nSearch s\nSort with category f\nExit e");
             action = k.nextLine().charAt(0);
         }
 
