@@ -20,9 +20,10 @@ public class Main {
     }
 
     /**
-     *
-     * @param k
-     * @param a
+     * Method that controls the user input and calls appropriate methods.
+     * 
+     * @param k The scanner used to get user input
+     * @param a The actions class instance used
      */
     public static void getInput(Scanner k, Actions a) {
         File recipeList = new File("RecipeList.txt");
