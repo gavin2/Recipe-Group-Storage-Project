@@ -255,30 +255,29 @@ public class Actions {
     }
 
     /**
-     * Jordan 
-     * 
+     * Jordan
+     *
      * A method that allows the user to enter a specific recipe and then edit it
-     * 
+     *
      * @param l An array list of all the recipes
      * @param k The scanner being used to obtain information from the user
      */
     public void editRecipe(ArrayList<Recipe> l, Scanner k) {
         int a;
         Recipe h = null;
-        System.out.print("What recipe would you like to edit?");
+        System.out.print("What recipe would you like to edit? ");
         String n = k.nextLine();
         n.toLowerCase();
         a = searchRec(l, n);
         if (a != -1) {
             h = l.get(a);
-        }
-        else{
-            System.out.println("There was a problem finding that recipe");
+        } else {
+            System.out.println("There was a problem finding that recipe.");
             return;
         }
 
         System.out.println("What would you like to do?\n a- edit steps\n "
-                + "b- edit ingredients\n c-remove steps\n d- remove ingredients\n e- return to main menu");
+                + "b- edit ingredients\n c- remove steps\n d- remove ingredients\n e- return to main menu");
         String choice = k.nextLine();
         choice.toLowerCase();
 
@@ -290,10 +289,10 @@ public class Actions {
                 editRecipeIngredients(l, h, k);
                 break;
             case "c":
-                //removeRecipeSteps
+                removeRecipeSteps(l, h, k);
                 break;
             case "d":
-                //removeRecipeIngredients
+                removeRecipeIngredients(l, h, k);
                 break;
             case "e":
                 return;
@@ -305,7 +304,7 @@ public class Actions {
 
     /**
      * Jordan
-     * 
+     *
      * @param l An array list of all the recipes
      * @param n The recipe the user would like to edit
      * @param k The scanner being used to obtain information from the user
@@ -334,7 +333,7 @@ public class Actions {
 
     /**
      * Jordan
-     * 
+     *
      * @param l An array list of all the recipes
      * @param n The recipe the user would like to edit
      * @param k The scanner being used to obtain information from the user
@@ -358,11 +357,59 @@ public class Actions {
         return;
     }
 
+    public void removeRecipeSteps(ArrayList<Recipe> l, Recipe n, Scanner k) {
+        String step;
+        System.out.print("Which step would you like to remove? Enter 0 to finish removing. ");
+        int in = k.nextInt();
+        do {
+            if (in < n.steps.size()) {
+                System.out.print("Are you sure you want to remove: " + n.steps.get(in) + " from the steps?\n 1- yes\n 2- no\n");
+                int answer = k.nextInt();
+                if (answer == 1) {
+                    System.out.println("You have removed " + n.steps.get(in) + " from the steps.");
+                    n.steps.remove(in);
+                } else if (answer == 2) {
+                    System.out.println("You will now be returned to the main menu.");
+                    return;
+                }
+            } else {
+                System.out.println("There was a problem finding that ingredient. ");
+            }
+            System.out.print("If you would like to remove another step, which one? Enter 0 to finidh removing. ");
+            in = k.nextInt();
+        } while (in != 0);
+    }
+
+    public void removeRecipeIngredients(ArrayList<Recipe> l, Recipe n, Scanner k) {
+        String ingredient;
+        System.out.print("Which igredient would you like to remove? Please enter the index of it. Enter 0 to finish removing. ");
+        int in = k.nextInt();
+        do {
+            if (in < n.ingredients.size()) {
+                System.out.print("Are you sure you want to remove: " + n.ingredients.get(in) + " fromt the ingredient list?\n 1- yes\n 2- no\n");
+                int answer = k.nextInt();
+                if (answer == 1) {
+                    System.out.println("You have removed: " + n.ingredients.get(in) + " from the ingredient list.");
+                    n.ingredients.remove(in);
+                } else if (answer == 2) {
+                    System.out.println("You will now be returned to the main menu");
+                    return;
+                }
+            } else {
+                System.out.println("There was a problem finding that ingredient. ");
+            }
+            System.out.print("If you would like to remove another ingredient, which one? Enter 0 to finish removing. ");
+            in = k.nextInt();
+        } while (in != 0);
+        return;
+    }
+
     /**
      * Jordan
-     * 
-     * A method 
-     * 
+     *
+     * A method to obtain a list of the ingredients of a certain recipe The
+     * recipe may also be scaled which allows for a larger grocery list
+     *
      * @param n An array list of all the recipes
      * @param k The scanner being used to obtain information from the user
      */
@@ -388,7 +435,7 @@ public class Actions {
     public int searchRec(ArrayList<Recipe> n, String name) {
         int length = n.size();
         name = name.toLowerCase();
-        
+
         for (int i = 0; i < length; i++) {
             if (n.get(i).name.toLowerCase().equals(name)) {
                 return i;
@@ -407,13 +454,13 @@ public class Actions {
     public int searchIng(ArrayList<Ingredient> n, String name) {
         int length = n.size();
         name = name.toLowerCase();
-        
+
         for (int i = 0; i < length; i++) {
             if (n.get(i).getI().toLowerCase().equals(name)) {
                 return i;
             }
         }
-        
+
         return -1; // When no ingredient the same return -1 since it is not an index
     }
 
@@ -442,19 +489,19 @@ public class Actions {
         }
         return recWithIng;
     }
-    
+
     public ArrayList<Recipe> searchCategory(ArrayList<Recipe> n, String cat) {
         int length = n.size();
         Collections.sort(n, Recipe.CategoryComparator);
         ArrayList<Recipe> recFromCat = new ArrayList<Recipe>();
         cat = cat.toLowerCase();
-        
+
         for (int i = 0; i < length; i++) {
             if (n.get(i).category.toLowerCase().equals(cat.toLowerCase())) {
                 recFromCat.add(n.get(i));
             }
         }
-        
+
         return recFromCat;
     }
 }
