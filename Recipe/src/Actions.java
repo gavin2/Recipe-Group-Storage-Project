@@ -213,6 +213,9 @@ public class Actions {
                     }
                 }
                 newRec.servings = Float.parseFloat(fileRead.next());
+                fileRead.nextLine();
+                fileRead.next();
+                newRec.time = fileRead.nextLine().trim();
                 while (!temp.equals("--")) {
                     temp = fileRead.nextLine().trim();
                     // add every line to a next step 
@@ -528,11 +531,5 @@ public class Actions {
         }
 
         return recFromCat; // Returning the ArrayList
-    }
-
-    public void printingStuff(ArrayList<Recipe> n) {
-        String temp = n.get(2).name.toLowerCase().trim();
-
-        System.out.println(temp + " " + temp.compareTo("soft pretzels"));
     }
 }

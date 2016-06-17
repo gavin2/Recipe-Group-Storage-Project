@@ -1,33 +1,4 @@
-Spanish Potato Omelet
-entree
-0.5 cup olive oil
-0.5 pound potatoes, thinly sliced
-1.0 teaspoon of salt and pepper (or to personal taste)
-1.0 large onion, thinly sliced
-4.0 eggs 
-2.0 tomatoes (peeled, seeded, and coarsly chopped)
-2.0 green onions, chopped
-;;
-6.0 Servings
-Time null
-Servings
-Time null
-Servings
-Time 1:00
-In a large frying pan or skillet, heat olive oil over medium-high heat. Sprinkle potatoes lightly with salt and pepper. Cook until golden brown and crisp.
-Once the potatoes are golden, stir in the onions. Cook, stirring occasionally, until onions soften and begin to brown.
-Meanwhile, beat eggs together with salt and pepper. Pour eggs into pan and stir gently to combine. Reduce heat to low and cook until eggs begin to brown on the bottom.
-Loosen bottom of omelet with a spatula, invert a large plate over the pan, and carefully turn the omelet out onto it. Slide the omelet back into the pan with the uncooked side down. Cook until eggs are set. Garnish omelet with tomato and green onion and serve warm.
---
-noodle
-asdf
-1.0 as awe
-;;
-12.0 Servings
-Time 0:05
-adfadf
---
-﻿Ham and Potato Soup
+Ham and Potato Soup
 Soup
 3.5 cups peeled and diced potato
 0.33 cups diced celery
@@ -41,14 +12,35 @@ Soup
 2.0 cups milk
 ;;
 8.0 Servings
-Time null
-Servings
-Time null
-Servings
 Time :45
 Combine the potatoes, celery, onion, ham and water in a stockpot. Bring to a boil, then cook over medium heat until potatoes are tender, about 10 to 15 minutes. Stir in the chicken bouillon, salt and pepper.
 In a separate saucepan, melt butter over medium-low heat. Whisk in flour with a fork, and cook, stirring constantly until thick, about 1 minute. Slowly stir in milk as not to allow lumps to form until all of the milk has been added. Continue stirring over medium-low heat until thick, 4 to 5 minutes.
 Stir the milk mixture into the stockpot, and cook soup until heated through. Serve immediately.
+--
+Spanish Potato Omelet
+entree
+0.5 cup olive oil
+0.5 pound potatoes, thinly sliced
+1.0 teaspoon of salt and pepper (or to personal taste)
+1.0 large onion, thinly sliced
+4.0 eggs 
+2.0 tomatoes (peeled, seeded, and coarsly chopped)
+2.0 green onions, chopped
+;;
+6.0 Servings
+Time 1:00
+In a large frying pan or skillet, heat olive oil over medium-high heat. Sprinkle potatoes lightly with salt and pepper. Cook until golden brown and crisp.
+Once the potatoes are golden, stir in the onions. Cook, stirring occasionally, until onions soften and begin to brown.
+Meanwhile, beat eggs together with salt and pepper. Pour eggs into pan and stir gently to combine. Reduce heat to low and cook until eggs begin to brown on the bottom.
+Loosen bottom of omelet with a spatula, invert a large plate over the pan, and carefully turn the omelet out onto it. Slide the omelet back into the pan with the uncooked side down. Cook until eggs are set. Garnish omelet with tomato and green onion and serve warm.
+--
+noodle
+noodles
+2.0 cups flour
+;;
+12.0 Servings
+Time 0:01
+asdfasdgasdgasdg
 --
 ﻿Soft Pretzels
 Dessert
@@ -64,10 +56,6 @@ Dessert
 0.25 cup kosher salt (for topping)
 ;;
 12.0 Servings
-Time null
-Servings
-Time null
-Servings
 Time 2:10
 In a small bowl, dissolve yeast and 1 teaspoon sugar in 1 1/4 cup warm water. Let stand until creamy, about 10 minutes.
 In a large bowl, mix together flour, 1/2 cup sugar, and salt. Make a well in the center; add the oil and yeast mixture. Mix and form into a dough. If the mixture is dry, add one or two more tablespoons of water. Knead the dough until smooth, about 7 to 8 minutes. Lightly oil a large bowl, place the dough in the bowl, and turn to coat with oil. Cover with plastic wrap and let rise in a warm place until doubled in size, about 1 hour.
