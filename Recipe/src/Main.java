@@ -46,7 +46,7 @@ public class Main {
         ArrayList<Recipe> allRecipes = a.readRecipe(recipeList); // ArrayList to store all of the recipes, from file
 
         System.out.println("Add a\nEdit recipe c\nSearch s\nSort with category f\nExit e");
-        char action = k.nextLine().charAt(0);
+        char action = k.nextLine().toLowerCase().charAt(0);
 
         while (action != '-') {
 

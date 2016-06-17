@@ -27,7 +27,7 @@ public class Actions {
     public Recipe addRecipe(Scanner k, File recipeList) {
         Recipe newR = new Recipe(); // Creating new recipe
         System.out.print("Recipe name: ");
-        newR.name = k.nextLine(); // Getting the recipe name
+        newR.name = k.nextLine().trim(); // Getting the recipe name
         addIngredients(newR, k); // Adding ingredients
         addSteps(newR, k); // Adding the steps to the recipe
 
@@ -371,7 +371,7 @@ public class Actions {
      */
     public void groceryList(ArrayList<Recipe> n, Scanner k) {
         System.out.println("Which recipe would you like to obtain a grocery list for?");
-        String r = k.nextLine();
+        String r = k.nextLine().toLowerCase();
         Recipe h = n.get(searchRec(n, r));
         System.out.println("How many servings would you like to have?");
         int s = k.nextInt();
@@ -390,8 +390,10 @@ public class Actions {
      */
     public int searchRec(ArrayList<Recipe> n, String name) {
         int length = n.size();
+        name = name.toLowerCase();
+        
         for (int i = 0; i < length; i++) {
-            if (n.get(i).name.equals(name)) {
+            if (n.get(i).name.toLowerCase().equals(name)) {
                 return i;
             }
         }
@@ -407,9 +409,10 @@ public class Actions {
      */
     public int searchIng(ArrayList<Ingredient> n, String name) {
         int length = n.size();
+        name = name.toLowerCase();
         
         for (int i = 0; i < length; i++) {
-            if (n.get(i).getI().equals(name)) {
+            if (n.get(i).getI().toLowerCase().equals(name)) {
                 return i;
             }
         }
@@ -427,13 +430,14 @@ public class Actions {
     public ArrayList<Recipe> searchIngredient(ArrayList<Recipe> n, String name) {
         int length = n.size();
         ArrayList<Recipe> recWithIng = new ArrayList<Recipe>();
+        name = name.toLowerCase();
 
         for (int i = 0; i < length; i++) {
             ArrayList<Ingredient> current = n.get(i).ingredients;
             Collections.sort(current);
             int li = current.size();
             for (int j = 0; j < li; j++) {
-                if (current.get(j).getI().equals(name)) {
+                if (current.get(j).getI().toLowerCase().equals(name)) {
                     recWithIng.add(n.get(i));
                     j = li++;
                 }

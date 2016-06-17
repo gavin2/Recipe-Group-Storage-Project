@@ -22,8 +22,8 @@ public class Recipe implements Comparable<Recipe> {
 
     public static Comparator<Recipe> CategoryComparator = new Comparator<Recipe>() {
         public int compare(Recipe o1, Recipe o2) {
-            String category1 = o1.category.toUpperCase();
-            String category2 = o2.category.toUpperCase();
+            String category1 = o1.category.toLowerCase();
+            String category2 = o2.category.toLowerCase();
             
             return category1.compareTo(category2);
         }
