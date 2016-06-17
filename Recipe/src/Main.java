@@ -13,14 +13,14 @@ public class Main {
     /**
      * Jordan'S To Do List: Removing steps/ingredients
      *
-     * Gavin: - Check the ingredients compareTo and Collections.sort() for errors
-     * 
+     * Gavin: - Check the ingredients compareTo and Collections.sort() for
+     * errors
+     *
      * Download current text file
-     * 
+     *
      * DON'T FORGET TO PUT YOUR NAME ON ANYTHING YOU CREATE
      *
      */
-    
     /**
      * @param args the command line arguments
      */
@@ -53,7 +53,15 @@ public class Main {
                     a.readRecipe(recipeList); //testing purposes only
                     break;
                 case "c":
-                    a.editRecipe(allRecipes, k);
+                    System.out.print("What recipe would you like to edit? ");
+                    String n = k.nextLine(); // Accepting the name of the recipe from the user
+                    Recipe r = a.editRecipe(allRecipes, n, k);
+                    if(r == null){}
+                    else{
+                        int b = a.searchRec(allRecipes, n);
+                        allRecipes.remove(b);
+                        allRecipes.add(b, r);
+                    }
                     Collections.sort(allRecipes);
                     break;
                 case "d":
