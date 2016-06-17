@@ -28,13 +28,10 @@ public class Actions {
         Recipe newR = new Recipe(); // Creating new recipe
         System.out.print("Recipe name: ");
         newR.name = k.nextLine().trim(); // Getting the recipe name
+        System.out.print("Category of recipe: ");
+        newR.category = k.nextLine().trim();
         addIngredients(newR, k); // Adding ingredients
         addSteps(newR, k); // Adding the steps to the recipe
-
-        System.out.print("Total time (h:mn): ");
-        newR.time = k.nextLine().trim();
-        System.out.print("Number of servings");
-        newR.servings = Float.parseFloat(k.nextLine());
 
         System.out.print("Total time (h:mn): ");
         newR.time = k.nextLine().trim();
@@ -148,7 +145,7 @@ public class Actions {
             Logger.getLogger(Actions.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        pw.println("\n" + n.name); // Printing the name to the file
+        pw.println("\n" + n.name + "\n" + n.category); // Printing the name to the file
 
         int size = n.ingredients.size();
         for (int i = 0; i < size; i++) { // For loop going through each ingredient
@@ -444,5 +441,20 @@ public class Actions {
             }
         }
         return recWithIng;
+    }
+    
+    public ArrayList<Recipe> searchCategory(ArrayList<Recipe> n, String cat) {
+        int length = n.size();
+        Collections.sort(n, Recipe.CategoryComparator);
+        ArrayList<Recipe> recFromCat = new ArrayList<Recipe>();
+        cat = cat.toLowerCase();
+        
+        for (int i = 0; i < length; i++) {
+            if (n.get(i).category.toLowerCase().equals(cat.toLowerCase())) {
+                recFromCat.add(n.get(i));
+            }
+        }
+        
+        return recFromCat;
     }
 }

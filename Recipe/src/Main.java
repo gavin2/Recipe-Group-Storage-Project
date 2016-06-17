@@ -13,12 +13,6 @@ public class Main {
     /**
      * Jordan'S To Do List: Removing steps/ingredients
      *
-     *
-     * Gavin: - Ask them what sub category their recipe belongs in before they
-     *          add it --> soup entree desert appetizer
-     *        - Search based on category
-     *        - Everything lowercase
-     *
      * DON'T FORGET TO PUT YOUR NAME ON ANYTHING YOU CREATE
      *
      * Searching for recipes based on categories
@@ -66,7 +60,9 @@ public class Main {
                     a.writer(allRecipes, recipeList);
                     System.exit(0);
                 case 'f':
-                    Collections.sort(allRecipes, Recipe.CategoryComparator);
+                    System.out.print("Enter category to search for: ");
+                    String cat = k.nextLine().trim();
+                    ArrayList<Recipe> category = a.searchCategory(allRecipes, cat);
                     break;
                 case 's':
                     System.out.print("Name of recipe: ");
