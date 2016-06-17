@@ -439,7 +439,7 @@ public class Actions {
         name = name.toLowerCase(); // Setting all the letters in the name to lower case
         
         for (int i = 0; i < length; i++) {
-            if (n.get(i).name.toLowerCase().equals(name)) { // Settin the name in the ArrayList to lower case to compare to the name given by user
+            if (n.get(i).name.toLowerCase().trim().equals(name.trim())) { // Settin the name in the ArrayList to lower case to compare to the name given by user
                 return i; // If they match return the index
             }
         }
@@ -513,5 +513,11 @@ public class Actions {
         }
         
         return recFromCat; // Returning the ArrayList
+    }
+    
+    public void printingStuff(ArrayList<Recipe> n) {
+        String temp = n.get(2).name.toLowerCase().trim();
+        
+        System.out.println(temp + " " + temp.compareTo("soft pretzels"));
     }
 }

@@ -19,10 +19,6 @@ public class Main {
      * 
      * DON'T FORGET TO PUT YOUR NAME ON ANYTHING YOU CREATE
      *
-     * Searching for recipes based on categories
-     *
-     * Recipe scaling
-     *
      */
     
     /**
@@ -44,43 +40,43 @@ public class Main {
         ArrayList<Recipe> allRecipes = a.readRecipe(recipeList); // ArrayList to store all of the recipes, from file
 
         System.out.println("Add a\nEdit recipe c\nSearch s\nSort with category f\nExit e");
-        char action = k.nextLine().toLowerCase().charAt(0);
+        String action = k.nextLine().toLowerCase();
 
-        while (action != '-') {
+        while (!action.equals("-")) {
 
             switch (action) {
-                case 'a':
+                case "a":
                     allRecipes.add(a.addRecipe(k, recipeList));
                     Collections.sort(allRecipes);
                     break;
-                case 'b':
+                case "b":
                     a.readRecipe(recipeList); //testing purposes only
                     break;
-                case 'c':
+                case "c":
                     a.editRecipe(allRecipes, k);
                     Collections.sort(allRecipes);
                     break;
-                case 'e':
+                case "e":
                     a.writer(allRecipes, recipeList);
                     System.exit(0);
-                case 'f':
+                case "f":
                     System.out.print("Enter category to search for: ");
                     String cat = k.nextLine().trim();
                     ArrayList<Recipe> category = a.searchCategory(allRecipes, cat);
                     break;
-                case 's':
+                case "s":
                     System.out.print("Name of recipe: ");
                     String name = k.nextLine().trim();
                     a.searchRec(allRecipes, name);
                     break;
-                case 'q':
+                case "q":
                     a.ingredientScaling(allRecipes, k);
                 default:
                     break;
             }
 
             System.out.println("Add a\nEdit recipe c\nSearch s\nSort with category f\nExit e");
-            action = k.nextLine().charAt(0);
+            action = k.nextLine();
         }
 
     }
