@@ -259,7 +259,6 @@ public class Actions {
         //get the length of the file (each line)
         int theCount = 0;
         try {
-
             // each recipe is separated by two hyphens
             fileRead = new Scanner(file).useDelimiter("--");
             while (fileRead.hasNext()) {
@@ -299,7 +298,7 @@ public class Actions {
             // round out the extreme decimal point
             System.out.print(df.format(scaledAmount));
             // print out the unit and name of the ingredient
-            System.out.println(" " + recipe.get(recIndex).ingredients.get(i).getU().toString() + " " + recipe.get(recIndex).ingredients.get(i).getI().toString());
+            System.out.println(" " + recipe.get(recIndex).ingredients.get(i).getU() + " " + recipe.get(recIndex).ingredients.get(i).getI());
         }
 
     }
