@@ -217,9 +217,13 @@ public class Actions {
                                 fileRead.nextLine().trim(), Float.parseFloat(temp)));
                     }
                 }
+                // servings
                 newRec.servings = Float.parseFloat(fileRead.next());
+                // move to the end of the previous line
                 fileRead.nextLine();
+                // get the word "time" to the scanner
                 fileRead.next();
+                // get the actual time (0:00)
                 newRec.time = fileRead.nextLine().trim();
                 // recipes are separated by two hyphens
                 while (!temp.equals("--")) {
@@ -237,7 +241,7 @@ public class Actions {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Actions.class.getName()).log(Level.SEVERE, null, ex);
         }
-        // sort the file of recipes
+        // sort the file of recipes and return the list
         Collections.sort(allRecipes);
         return allRecipes;
     }
@@ -437,7 +441,7 @@ public class Actions {
             }
             System.out.print("If you would like to remove another step, which one? Enter 0 to finish removing. ");
             in = Integer.parseInt(k.nextLine());
-            if(in == 0){
+            if (in == 0) {
                 return;
             }
             in = in - 1;
