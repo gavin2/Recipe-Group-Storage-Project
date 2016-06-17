@@ -16,27 +16,28 @@ import java.util.logging.Logger;
  */
 public class Actions {
 
-    PrintWriter pw = null;
+    PrintWriter pw = null; // Print Wrtier to be used to write to the file
 
     /**
      * Gavin - Method used to add a new recipe.
      *
      * @param k Scanner used to get input
      * @param recipeList The file storing the recipes
+     * @return Returns the newly created recipe
      */
     public Recipe addRecipe(Scanner k, File recipeList) {
         Recipe newR = new Recipe(); // Creating new recipe
         System.out.print("Recipe name: ");
         newR.name = k.nextLine().trim(); // Getting the recipe name
         System.out.print("Category of recipe: ");
-        newR.category = k.nextLine().trim();
+        newR.category = k.nextLine().trim(); // Getting the category of the desert (example: dessert, soup, etc)
         addIngredients(newR, k); // Adding ingredients
         addSteps(newR, k); // Adding the steps to the recipe
 
         System.out.print("Total time (h:mn): ");
-        newR.time = k.nextLine().trim();
+        newR.time = k.nextLine().trim(); // Getting the total amount of time to make the recipe
         System.out.print("Number of servings");
-        newR.servings = Float.parseFloat(k.nextLine());
+        newR.servings = Float.parseFloat(k.nextLine()); // Getting the number of servings that recipe makes
 
         return newR;
     }

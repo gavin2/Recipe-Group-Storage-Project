@@ -13,6 +13,10 @@ public class Main {
     /**
      * Jordan'S To Do List: Removing steps/ingredients
      *
+     * Gavin: - Check the ingredients compareTo and Collections.sort() for errors
+     * 
+     * Download current text file
+     * 
      * DON'T FORGET TO PUT YOUR NAME ON ANYTHING YOU CREATE
      *
      * Searching for recipes based on categories
