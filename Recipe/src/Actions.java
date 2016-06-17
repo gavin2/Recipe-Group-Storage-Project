@@ -279,14 +279,11 @@ public class Actions {
      * @param recipe the recipe array list
      * @param k the scanner to be passed on to this method
      */
-    public void ingredientScaling(ArrayList<Recipe> recipe, Scanner k) {
+    public void ingredientScalling(ArrayList<Recipe> recipe, Scanner k, int recIndex) {
         DecimalFormat df = new DecimalFormat("#.##");
         df.setRoundingMode(RoundingMode.CEILING);
         // ask the user what recipe thy want to scale for
-        System.out.println("What recipe do you want to scale?");
-        String recForScaling = k.nextLine();
         // seach for the recipe and get its index in the array list
-        int recIndex = searchRec(recipe, recForScaling);
         System.out.println("Current servings: " + recipe.get(recIndex).servings + " how many servings would you like to make? ");
         // ask the user for their desired amount of scaling for servings
         int recScaling = Integer.parseInt(k.nextLine());
@@ -361,6 +358,7 @@ public class Actions {
         String step;
         System.out.print("Which step would you like to edit? Enter 0 to finish editing. "); // Asks the user for input
         int in = Integer.parseInt(k.nextLine()); // Obtains the index of the step from the user
+        in = in - 1; // Removes one from what the user entered because the first item is item 0
         do { // Does this while the user doesn't want to exit
             if (in >= n.steps.size()) { // When the step is outside the list of steps
                 addSteps(n, k); // Calls method to add a new step
@@ -383,6 +381,10 @@ public class Actions {
             }
             System.out.print("If you would like to edit another step, which one? Enter 0 to finish editing. ");
             in = Integer.parseInt(k.nextLine());
+            if(in == 0){
+                return;
+            }
+            in = in - 1;
         } while (in != 0);
         return;
     }
@@ -397,6 +399,7 @@ public class Actions {
         String ingredient;
         System.out.print("Which ingredient would you like to edit? Please enter the index of it. Enter 0 to finish editing. ");
         int in = Integer.parseInt(k.nextLine());
+        in = in - 1;
         do {
             if (in >= n.ingredients.size()) {
                 addIngredients(n, k);
@@ -409,6 +412,10 @@ public class Actions {
             }
             System.out.print("If you would like to edit another ingredient, which one? Enter 0 to finish editing. ");
             in = Integer.parseInt(k.nextLine());
+            if(in == 0){
+                return;
+            }
+            in = in - 1;
         } while (in != 0);
         return;
     }
@@ -458,6 +465,7 @@ public class Actions {
         String ingredient;
         System.out.print("Which igredient would you like to remove? Please enter the index of it. Enter 0 to finish removing. ");
         int in = Integer.parseInt(k.nextLine()); // Obtaining the index of the ingredient to be removed
+        in = in - 1;
         do { // Does this while the user doesn't want to exit
             if (in < n.ingredients.size()) { // If the ingredient is in the ingredient list
                 System.out.print("Are you sure you want to remove: " + n.ingredients.get(in)
@@ -475,6 +483,10 @@ public class Actions {
             }
             System.out.print("If you would like to remove another ingredient, which one? Enter 0 to finish removing. "); // Asks the user if they would like to edit another ingredient
             in = Integer.parseInt(k.nextLine()); // Obtains the choice/ingredient from the user
+            if(in == 0){ // Exits when the user enters 0
+                return;
+            }
+            in = in - 1;
         } while (in != 0);
         return; // Returns to the main menu
     }
@@ -489,11 +501,12 @@ public class Actions {
      */
     public void groceryList(ArrayList<Recipe> n, Scanner k) {
         System.out.println("Which recipe would you like to obtain a grocery list for?");
-        String r = k.nextLine(); // Obtains input from the user
-        Recipe h = n.get(searchRec(n, r));
-        ingredientScaling(n, k);
-        for (int b = 0; b < h.ingredients.size(); b++) {
-            System.out.println(h.ingredients.get(b).toString());
+        String r = k.nextLine().trim(); // Obtains input from the user
+        Recipe h = n.get(searchRec(n, r)); // Finds the recipe
+        int recIndex = searchRec(n, r); // Gets the index of the recipe
+        ingredientScalling(n, k, recIndex); // Calls the method to choose the scalling of the recipe 
+        for (int b = 0; b < h.ingredients.size(); b++) { // Goes through the list of ingredients
+            System.out.println(h.ingredients.get(b).toString()); // Outputs each one with the proper scalling of measurments
         }
     }
 
