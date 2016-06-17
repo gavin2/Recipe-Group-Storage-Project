@@ -39,7 +39,7 @@ public class Main {
         File recipeList = new File("RecipeList.txt");
         ArrayList<Recipe> allRecipes = a.readRecipe(recipeList); // ArrayList to store all of the recipes, from file
 
-        System.out.println("Add a\nEdit recipe c\nSearch s\nSort with category f\nSearching every recipe for an ingredient h\nExit e");
+        System.out.println("Add a\nEdit recipe c\nCreate a grocery list d\nSearch s\nSort with category f\nSearching every recipe for an ingredient h\nExit e");
         String action = k.nextLine().toLowerCase();
 
         while (!action.equals("-")) {
@@ -55,6 +55,9 @@ public class Main {
                 case "c":
                     a.editRecipe(allRecipes, k);
                     Collections.sort(allRecipes);
+                    break;
+                case "d":
+                    a.groceryList(allRecipes, k);
                     break;
                 case "e":
                     a.writer(allRecipes, recipeList);
