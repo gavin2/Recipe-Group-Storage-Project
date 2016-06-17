@@ -21,7 +21,7 @@ public class Main {
 
     /**
      * Method that controls the user input and calls appropriate methods.
-     * 
+     *
      * @param k The scanner used to get user input
      * @param a The actions class instance used
      */
@@ -46,8 +46,8 @@ public class Main {
                     System.out.print("What recipe would you like to edit? ");
                     String n = k.nextLine(); // Accepting the name of the recipe from the user
                     Recipe r = a.editRecipe(allRecipes, n, k);
-                    if(r == null){}
-                    else{
+                    if (r == null) {
+                    } else {
                         int b = a.searchRec(allRecipes, n);
                         allRecipes.remove(b);
                         allRecipes.add(b, r);
