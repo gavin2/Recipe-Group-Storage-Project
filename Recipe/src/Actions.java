@@ -191,6 +191,7 @@ public class Actions {
      * Read everything necessary from the file
      *
      * @param recipeList The file to be passed on to this method for reading
+     * @return Returns an ArrayList containing all the recipes that were found in the text file
      */
     public ArrayList<Recipe> readRecipe(File recipeList) {
 
@@ -281,6 +282,7 @@ public class Actions {
      *
      * @param recipe the recipe array list
      * @param k the scanner to be passed on to this method
+     * @param recIndex Index of the recipe
      */
     public void ingredientScalling(ArrayList<Recipe> recipe, Scanner k, int recIndex) {
         DecimalFormat df = new DecimalFormat("#.##");
@@ -310,11 +312,13 @@ public class Actions {
      * (edit/add/remove ingredients or steps)
      *
      * @param l An array list of all the recipes
+     * @param n Name of recipe to be searched for
      * @param k The scanner being used to obtain information from the user
+     * @return Returns the recipe complete with changes 
      */
     public Recipe editRecipe(ArrayList<Recipe> l, String n, Scanner k) {
         int a;
-        Recipe h = null;
+        Recipe h;
         a = searchRec(l, n); // Finding the recipe in the array list
         if (a != -1) {
             h = l.get(a); // Getting the recipe from the array list
@@ -326,7 +330,7 @@ public class Actions {
         System.out.println("What would you like to do?\n a- edit steps\n "
                 + "b- edit ingredients\n c- remove steps\n d- remove ingredients\n e- return to the main menu"); // Obtains their choice in order to call the required method
         String choice = k.nextLine(); // Obtains the user's choice
-        choice.toLowerCase();
+        choice = choice.toLowerCase();
 
         switch (choice) { // Switch statement to determine what method to call
             case "a":
@@ -374,7 +378,7 @@ public class Actions {
                     System.out.println("What would you like to change it to?");
                     k.nextLine();
                     String newStep = k.nextLine(); // Obtains the new step from the user
-                    newStep.toLowerCase();
+                    newStep = newStep.toLowerCase();
                     n.steps.get(in).setStep(newStep); // Replaces the step with what the user has entered
                     System.out.println("This is the new step\n" + n.steps.get(in).getStep());
                 } else { // When the user would not like to edit the step
@@ -389,7 +393,7 @@ public class Actions {
             }
             in = in - 1; // Same reason as before
         } while (in != 0);
-        return; // Returns to the main menu
+        // Return to the main menu
     }
 
     /**
@@ -401,7 +405,6 @@ public class Actions {
      * @param k The scanner being used to obtain information from the user
      */
     public void editRecipeIngredients(Recipe n, Scanner k) {
-        String ingredient;
         System.out.print("Which ingredient would you like to edit? Please enter the index of it. Enter 0 to finish editing. ");
         int in = Integer.parseInt(k.nextLine()); // Obtains the index of the ingredient from the user
         in = in - 1;
@@ -422,7 +425,7 @@ public class Actions {
             }
             in = in - 1;
         } while (in != 0);
-        return; // Returns to the main menu 
+        // Returns to the main menu 
     }
 
     /**
@@ -459,7 +462,7 @@ public class Actions {
             }
             in = in - 1;
         } while (in != 0);
-        return; // Returns to the main menu
+        // Returns to the main menu
     }
 
     /**
@@ -497,7 +500,7 @@ public class Actions {
             }
             in = in - 1;
         } while (in != 0);
-        return; // Returns to the main menu
+        // Returns to the main menu
     }
 
     /**

@@ -85,6 +85,7 @@ public class Ingredient implements Comparable<Ingredient> {
      * 
      * @return String with the value of the name of the ingredient and stuff
      */
+    @Override
     public String toString() {
         return (amount + " " + unit + " " + ingredient);
     }

@@ -88,7 +88,9 @@ public class Main {
                     a.searchRec(allRecipes, name); // Searching for recipe entered
                     break;
                 case "q":
-                    a.ingredientScaling(allRecipes, k);
+                    System.out.print("Name of recipe: ");
+                    String nameTwo = k.nextLine().trim();
+                    a.ingredientScalling(allRecipes, k, a.searchRec(allRecipes, nameTwo));
                     break;
                 case "h":
                     System.out.print("Ingredient: ");
