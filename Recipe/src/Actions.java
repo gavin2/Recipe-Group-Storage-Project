@@ -217,9 +217,13 @@ public class Actions {
                                 fileRead.nextLine().trim(), Float.parseFloat(temp)));
                     }
                 }
+                // servings
                 newRec.servings = Float.parseFloat(fileRead.next());
+                // move to the end of the previous line
                 fileRead.nextLine();
+                // get the word "time" to the scanner
                 fileRead.next();
+                // get the actual time (0:00)
                 newRec.time = fileRead.nextLine().trim();
                 // recipes are separated by two hyphens
                 while (!temp.equals("--")) {
@@ -237,7 +241,7 @@ public class Actions {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Actions.class.getName()).log(Level.SEVERE, null, ex);
         }
-        // sort the file of recipes
+        // sort the file of recipes and return the list
         Collections.sort(allRecipes);
         return allRecipes;
     }
@@ -255,7 +259,6 @@ public class Actions {
         //get the length of the file (each line)
         int theCount = 0;
         try {
-
             // each recipe is separated by two hyphens
             fileRead = new Scanner(file).useDelimiter("--");
             while (fileRead.hasNext()) {
@@ -292,7 +295,7 @@ public class Actions {
             // round out the extreme decimal point
             System.out.print(df.format(scaledAmount));
             // print out the unit and name of the ingredient
-            System.out.println(" " + recipe.get(recIndex).ingredients.get(i).getU().toString() + " " + recipe.get(recIndex).ingredients.get(i).getI().toString());
+            System.out.println(" " + recipe.get(recIndex).ingredients.get(i).getU() + " " + recipe.get(recIndex).ingredients.get(i).getI());
         }
 
     }
