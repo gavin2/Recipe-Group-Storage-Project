@@ -20,7 +20,9 @@ import java.util.Scanner;
  * write the recipe, use the same screen to edit recipes except all the previously 
  * stored information would be written in the text fields.  We feel as though 
  * a GUI would have made the program more user friendly and less complicated however
- * we sadly ran out of time.
+ * we sadly ran out of time. Plus, it would have been nice to have a more advanced
+ * search function when search through each recipe for ingredients because the current
+ * way the user has to know the specific ingredient and cannot search just a general term.
  */
 public class Main {
    
