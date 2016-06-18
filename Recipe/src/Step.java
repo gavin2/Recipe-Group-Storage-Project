@@ -1,9 +1,12 @@
 /**
- *
  * @author Gavin Christie
+ * 
+ * This class is the template for the steps in a recipe.  It just holds the step
+ * as a string. Although it probably could have been done with a simple string in
+ * the recipe class, a new step class was used to allow for future changes.
  */
 public class Step {
-    private String step;
+    private String step; // String value for the step
     
     /**
      * Gavin - Constructor to initialize all the variables when a new step is created.

@@ -5,8 +5,22 @@ import java.util.Collections;
 import java.util.Scanner;
 
 /**
- *
- * @author Gavin Christie
+ * @author Gavin Christie, Jordan Hurley and Carter Ford
+ * 
+ * This program is to be used as a virtual recipe book. Recipes can be stored to
+ * a text file, they can be edited (add ingredients or steps, rewrite previously
+ * stored steps, create a shopping list, scale the shopping list which means calculate
+ * the amount of each ingredient required to make an input number of servings) and
+ * the program has many more features.
+ * 
+ * The goal for the program was to have a fully working GUI so that the user could
+ * selected what they wanted to do using buttons and drop down menus. So key 
+ * features that we had hoped to complete with the GUI were: when adding a new 
+ * recipe a page of text files would be shown where the user could more easily 
+ * write the recipe, use the same screen to edit recipes except all the previously 
+ * stored information would be written in the text fields.  We feel as though 
+ * a GUI would have made the program more user friendly and less complicated however
+ * we sadly ran out of time.
  */
 public class Main {
    
@@ -37,7 +51,7 @@ public class Main {
             switch (action) {
                 case "a":
                     allRecipes.add(a.addRecipe(k, recipeList));
-                    Collections.sort(allRecipes);
+                    Collections.sort(allRecipes); // Sorts the recipes alphabetically
                     break;
                 case "b":
                     a.readRecipe(recipeList); //testing purposes only
@@ -58,32 +72,35 @@ public class Main {
                     a.groceryList(allRecipes, k);
                     break;
                 case "e":
-                    a.writer(allRecipes, recipeList);
-                    System.exit(0);
+                    a.writer(allRecipes, recipeList); // Write to file before closing
+                    System.exit(0); // Closing
                 case "f":
                     System.out.print("Enter category to search for: ");
-                    String cat = k.nextLine().trim();
-                    ArrayList<Recipe> category = a.searchCategory(allRecipes, cat);
+                    String cat = k.nextLine().trim(); // Getting the category to be searched for
+                    ArrayList<Recipe> category = a.searchCategory(allRecipes, cat); // Creating ArrayList of recipes from the category
+                    if (category.isEmpty()) { // If there's no recipe from that category
+                        System.out.print("No elements under that category.");
+                    }
                     break;
                 case "s":
                     System.out.print("Name of recipe: ");
-                    String name = k.nextLine().trim();
-                    a.searchRec(allRecipes, name);
+                    String name = k.nextLine().trim(); // Getting search term
+                    a.searchRec(allRecipes, name); // Searching for recipe entered
                     break;
                 case "q":
                     a.ingredientScaling(allRecipes, k);
                     break;
                 case "h":
                     System.out.print("Ingredient: ");
-                    String test = k.nextLine();
-                    ArrayList<Recipe> withIng = a.searchIngredient(allRecipes, test);
+                    String test = k.nextLine(); // Getting ingredient to search for
+                    ArrayList<Recipe> withIng = a.searchIngredient(allRecipes, test); // Creating ArrayList to hold all the recipes with that ingredient
                     break;
                 default:
                     break;
             }
 
             System.out.println("\nAdd a\nEdit recipe c\nSearch s\nSort with category f\nExit e");
-            action = k.nextLine();
+            action = k.nextLine(); // Getting next action
         }
 
     }

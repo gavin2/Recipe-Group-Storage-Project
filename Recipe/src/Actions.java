@@ -13,8 +13,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author Gavin Christie
+ * @author Gavin Christie, Jordan Hurley, Carter Ford
+ * 
+ * This class contains all of the necessary methods for searching, reading from and writing
+ * to the file, adding recipes, editing recipes, creating a shopping list and scaling
+ * the ingredients.
  */
 public class Actions {
 

@@ -1,11 +1,14 @@
 /**
- *
  * @author Gavin Christie
+ * 
+ * This class is used as the outline for all the ingredients. It stores the ingredient's
+ * name, the unit of measurement and the amount of the ingredient required for the 
+ * recipe that the ingredient is stored in.
  */
 public class Ingredient implements Comparable<Ingredient> {
-    private String ingredient;
-    private float amount;
-    private String unit;
+    private String ingredient; // Name
+    private float amount; // Amount
+    private String unit; // The unit of measurement
     
     /**
      * Gavin - Constructor used to initialize the ingredient class by giving the
