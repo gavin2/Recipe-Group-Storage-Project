@@ -59,17 +59,17 @@ public class Main {
                 case "c":
                     System.out.print("What recipe would you like to edit? ");
                     String n = k.nextLine(); // Accepting the name of the recipe from the user
-                    Recipe r = a.editRecipe(allRecipes, n, k);
+                    Recipe r = a.editRecipe(allRecipes, n, k); // Editing the recipe
                     if (r == null) {
-                    } else {
+                    } else { // Writing the new recipe to the array list in place of the other one
                         int b = a.searchRec(allRecipes, n);
-                        allRecipes.remove(b);
-                        allRecipes.add(b, r);
+                        allRecipes.remove(b); // Removing the original recipe from the array list 
+                        allRecipes.add(b, r); // Replacing the recipe
                     }
                     Collections.sort(allRecipes);
                     break;
                 case "d":
-                    a.groceryList(allRecipes, k);
+                    a.groceryList(allRecipes, k); // Create a grocery list
                     break;
                 case "e":
                     a.writer(allRecipes, recipeList); // Write to file before closing
