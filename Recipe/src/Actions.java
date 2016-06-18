@@ -378,85 +378,91 @@ public class Actions {
             }
             System.out.print("If you would like to edit another step, which one? Enter 0 to finish editing. ");
             in = Integer.parseInt(k.nextLine());
-            if(in == 0){
+            if(in == 0){ // When the user enters 0
                 return;
             }
-            in = in - 1;
+            in = in - 1; // Same reason as before
         } while (in != 0);
-        return;
+        return; // Returns to the main menu
     }
 
     /**
      * Jordan
      *
+     * A method to edit the ingredients 
+     * 
      * @param n The recipe the user would like to edit
      * @param k The scanner being used to obtain information from the user
      */
     public void editRecipeIngredients(Recipe n, Scanner k) {
         String ingredient;
         System.out.print("Which ingredient would you like to edit? Please enter the index of it. Enter 0 to finish editing. ");
-        int in = Integer.parseInt(k.nextLine());
+        int in = Integer.parseInt(k.nextLine()); // Obtains the index of the ingredient from the user
         in = in - 1;
-        do {
-            if (in >= n.ingredients.size()) {
-                addIngredients(n, k);
-            } else if (in < n.ingredients.size()) {
-                System.out.println("This is the original ingredient\n" + n.ingredients.get(in));
-                Ingredient i = createIngredient(k);
-                n.ingredients.remove(in);
-                n.ingredients.add(in, i);
-                System.out.println("This is the new ingredient\n" + n.ingredients.get(in));
+        do { // Does this while the user doesn't want to exit
+            if (in >= n.ingredients.size()) { // When the index of the ingredient is outside of the ingredient list
+                addIngredients(n, k); // Adding a new ingredient
+            } else if (in < n.ingredients.size()) { // When the ingredient is in the list
+                System.out.println("This is the original ingredient\n" + n.ingredients.get(in)); // Outputs the original ingredient
+                Ingredient i = createIngredient(k); // Obtains the new ingredient from the user
+                n.ingredients.remove(in); // Removes the original ingredient
+                n.ingredients.add(in, i); // Replaces the ingredient with the new one
+                System.out.println("This is the new ingredient\n" + n.ingredients.get(in)); // Outputs the new ingredient
             }
             System.out.print("If you would like to edit another ingredient, which one? Enter 0 to finish editing. ");
-            in = Integer.parseInt(k.nextLine());
+            in = Integer.parseInt(k.nextLine()); // Obtains the choice from the user
             if(in == 0){
                 return;
             }
             in = in - 1;
         } while (in != 0);
-        return;
+        return; // Returns to the main menu 
     }
 
     /**
      * Jordan
      *
-     * @param n
-     * @param k
+     * A method to remove steps 
+     * 
+     * @param n The recipe
+     * @param k Scanner getting input
      */
     public void removeRecipeSteps(Recipe n, Scanner k) {
         String step;
         System.out.print("Which step would you like to remove? Enter 0 to finish removing. ");
-        int in = Integer.parseInt(k.nextLine());
+        int in = Integer.parseInt(k.nextLine()); // Gets the index of the step from the user
         in = in - 1;
         do {
-            if (in < n.steps.size()) {
+            if (in < n.steps.size()) { // When the step is in the list
                 System.out.print("Are you sure you want to remove: " + n.steps.get(in).getStep() + " from the steps?\n 1- yes\n 2- no\n");
-                int answer = Integer.parseInt(k.nextLine());
-                if (answer == 1) {
-                    System.out.println("You have removed " + n.steps.get(in).getStep() + " from the steps.");
-                    n.steps.remove(in);
-                } else if (answer == 2) {
+                int answer = Integer.parseInt(k.nextLine()); // Obtains the choice from the user
+                if (answer == 1) { // When the user wants to remove the step
+                    System.out.println("You have removed " + n.steps.get(in).getStep() + " from the steps."); // Outputs the step that the user is removing
+                    n.steps.remove(in); // Removes the specific step
+                } else if (answer == 2) { // When the user doesn't want to remove the step
                     System.out.println("You will now be returned to the main menu.");
-                    return;
+                    return; // Returns to the main menu
                 }
-            } else {
+            } else { // When the step doesn't exist
                 System.out.println("There was a problem finding that step. ");
             }
             System.out.print("If you would like to remove another step, which one? Enter 0 to finish removing. ");
-            in = Integer.parseInt(k.nextLine());
-            if(in == 0){
+            in = Integer.parseInt(k.nextLine()); // Obtains the choice from the user
+            if(in == 0){ // When the choice is 0
                 return;
             }
             in = in - 1;
         } while (in != 0);
-        return;
+        return; // Returns to the main menu
     }
 
     /**
      * Jordan
      *
-     * @param n
-     * @param k
+     * A method to remove ingredients
+     * 
+     * @param n The recipe
+     * @param k The scanner being used to get input
      */
     public void removeRecipeIngredients(Recipe n, Scanner k) {
         String ingredient;
@@ -499,9 +505,10 @@ public class Actions {
     public void groceryList(ArrayList<Recipe> n, Scanner k) {
         System.out.println("Which recipe would you like to obtain a grocery list for?");
         String r = k.nextLine().trim(); // Obtains input from the user
+        System.out.print(n.get(2));
         Recipe h = n.get(searchRec(n, r)); // Finds the recipe
         int recIndex = searchRec(n, r); // Gets the index of the recipe
-        ingredientScalling(n, k, recIndex); // Calls the method to choose the scalling of the recipe 
+        ingredientScalling(n, k, recIndex); // Calls the method (Carter's) to choose the scalling of the recipe 
         for (int b = 0; b < h.ingredients.size(); b++) { // Goes through the list of ingredients
             System.out.println(h.ingredients.get(b).toString()); // Outputs each one with the proper scalling of measurments
         }
